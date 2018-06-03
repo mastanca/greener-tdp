@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion maxApiLevel.toInteger()
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.saantiaguilera.greener"
+        minSdkVersion minApiLevel
+        targetSdkVersion maxApiLevel
+        versionCode 1
+        versionName "1.0"
+    }
+
+    dexOptions {
+        preDexLibraries = true
+        javaMaxHeapSize "8g"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'LICENSE.txt'
+        exclude 'license.txt'
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            initWith(buildTypes.debug)
+        }
+    }
+
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.bluelinelabs:conductor:$conductorVersion"
+    implementation "com.bluelinelabs:conductor-rxlifecycle2:$conductorVersion"
+    implementation "com.bluelinelabs:conductor-autodispose:$conductorVersion"
+}
