@@ -8,7 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import com.bluelinelabs.conductor.RouterTransaction
+import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.MostSoldAdapter
@@ -53,7 +54,9 @@ class HomeController : RxController() {
     }
 
     private fun showDetailsForProduct() {
-
+        router.pushController(RouterTransaction.with(SingleProductViewController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showSearch() {
@@ -61,7 +64,9 @@ class HomeController : RxController() {
     }
 
     private fun showShopForProduct() {
-
+        router.pushController(RouterTransaction.with(SingleProductShopController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
 }

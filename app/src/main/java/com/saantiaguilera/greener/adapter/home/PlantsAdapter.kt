@@ -3,7 +3,6 @@ package com.saantiaguilera.greener.adapter.home
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.random
