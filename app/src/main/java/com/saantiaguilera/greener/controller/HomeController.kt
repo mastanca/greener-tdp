@@ -21,36 +21,33 @@ import com.saantiaguilera.greener.adapter.home.ProductsAdapter
  */
 class HomeController : RxController() {
 
-    override fun onContextAvailable(context: Context) {
-        super.onContextAvailable(context)
-        (context as? AppCompatActivity)?.supportActionBar?.apply {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
+        (container.context as? AppCompatActivity)?.supportActionBar?.apply {
             title = resources!!.getString(R.string.app_name)
             show()
         }
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        val view = inflater.inflate(R.layout.controller_home, container, false)
-        view.findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
-            layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
-            adapter = PlantsAdapter().apply {
-                addClickListener = { showSearch() }
-                itemClickListener = View.OnClickListener { showDetailsForProduct() }
+        return inflater.inflate(R.layout.controller_home, container, false).apply {
+            findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
+                layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
+                adapter = PlantsAdapter().apply {
+                    addClickListener = { showSearch() }
+                    itemClickListener = View.OnClickListener { showDetailsForProduct() }
+                }
+            }
+            findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = ProductsAdapter().apply {
+                    clickListener = View.OnClickListener { showDetailsForProduct() }
+                }
+            }
+            findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = MostSoldAdapter().apply {
+                    clickListener = View.OnClickListener { showShopForProduct() }
+                }
             }
         }
-        view.findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = ProductsAdapter().apply {
-                clickListener = View.OnClickListener { showDetailsForProduct() }
-            }
-        }
-        view.findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = MostSoldAdapter().apply {
-                clickListener = View.OnClickListener { showShopForProduct() }
-            }
-        }
-        return view
     }
 
     private fun showDetailsForProduct() {
@@ -60,7 +57,9 @@ class HomeController : RxController() {
     }
 
     private fun showSearch() {
-
+        router.pushController(RouterTransaction.with(SearchController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showShopForProduct() {

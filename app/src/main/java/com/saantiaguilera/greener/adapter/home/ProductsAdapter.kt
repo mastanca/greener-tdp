@@ -19,7 +19,6 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return object : RecyclerView.ViewHolder(ImageView(parent.context).apply {
             layoutParams = ViewGroup.LayoutParams(240, 240)
-
         }){}
     }
 

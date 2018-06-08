@@ -1,10 +1,11 @@
 package com.saantiaguilera.greener.controller
 
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 
@@ -13,15 +14,17 @@ import com.saantiaguilera.greener.R
  */
 class SingleProductShopController : RxController() {
 
-    override fun onContextAvailable(context: Context) {
-        super.onContextAvailable(context)
-        (context as? AppCompatActivity)?.supportActionBar?.apply {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
+        (container.context as? AppCompatActivity)?.supportActionBar?.apply {
             title = "Producto Testeo"
             show()
         }
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View =
-            inflater.inflate(R.layout.controller_product_shop, container, false)
+        return inflater.inflate(R.layout.controller_product_shop, container, false).apply {
+            findViewById<ImageView>(R.id.controller_product_shop_buy_view).setOnClickListener {
+                Toast.makeText(context, "You have clicked the buy button", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
 }
