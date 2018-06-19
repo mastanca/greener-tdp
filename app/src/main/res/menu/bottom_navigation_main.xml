@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_plants"
+        android:enabled="true"
+        android:icon="@drawable/flower"
+        android:title="Mis plantas"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_store"
+        android:enabled="true"
+        android:icon="@drawable/store"
+        android:title="Mercado"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/profile"
+        android:title="Mi perfil"
+        app:showAsAction="always" />
+</menu>

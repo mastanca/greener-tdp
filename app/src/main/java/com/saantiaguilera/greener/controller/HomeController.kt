@@ -1,11 +1,14 @@
 package com.saantiaguilera.greener.controller
 
 import android.content.Context
+import android.support.design.internal.BottomNavigationMenuView
+import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.RouterTransaction
@@ -47,7 +50,32 @@ class HomeController : RxController() {
                     clickListener = View.OnClickListener { showShopForProduct() }
                 }
             }
+            findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
+                setOnNavigationItemSelectedListener { item -> showTab(item) }
+            }
         }
+    }
+
+    private fun showTab(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_home -> showHomeTab()
+            R.id.action_plants -> showMyPlantsTab()
+            R.id.action_store -> showStoreTab()
+            R.id.action_profile -> showProfileTab()
+        }
+        return true
+    }
+
+    private fun showHomeTab() {
+    }
+
+    private fun showMyPlantsTab() {
+    }
+
+    private fun showStoreTab() {
+    }
+
+    private fun showProfileTab() {
     }
 
     private fun showDetailsForProduct() {

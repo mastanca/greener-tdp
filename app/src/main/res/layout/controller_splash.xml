@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:text="Greener"
+        android:gravity="center"
+        android:textSize="50sp"
         android:layout_gravity="center"
-        android:layout_margin="140dp"
-        android:src="@mipmap/ic_launcher_round" />
+        android:textStyle="bold"
+        android:shadowRadius="5"
+        android:textColor="@color/colorAccent"/>
 
 </FrameLayout>
