@@ -47,7 +47,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = MostSoldAdapter().apply {
-                    clickListener = View.OnClickListener { showShopForProduct() }
+                    clickListener = { showShopForProduct(it) }
                 }
             }
             findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
@@ -89,8 +89,8 @@ class HomeController : RxController() {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showShopForProduct() {
-        router.pushController(RouterTransaction.with(SingleProductShopController())
+    private fun showShopForProduct(icon: Int) {
+        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.icon = icon })
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }

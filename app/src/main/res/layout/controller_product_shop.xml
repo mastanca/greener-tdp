@@ -11,11 +11,11 @@
         android:padding="12dp">
 
         <ImageView
+            android:id="@+id/product_shop_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_launcher_round"
             android:layout_marginLeft="120dp"
             android:layout_marginRight="120dp"
             android:layout_marginTop="24dp"
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/ic_jonca_de_madera"
                 android:layout_marginRight="8dp"/>
 
             <TextView
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/ic_launcher_round"
+                android:src="@drawable/ic_sugar"
                 android:layout_marginRight="8dp"/>
 
             <TextView
@@ -119,8 +119,8 @@
         <ImageView
             android:id="@+id/controller_product_shop_buy_view"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_chopin"
             android:scaleType="centerInside" />
 
     </LinearLayout>

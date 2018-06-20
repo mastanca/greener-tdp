@@ -14,6 +14,8 @@ import com.saantiaguilera.greener.R
  */
 class SingleProductShopController : RxController() {
 
+    var icon: Int = R.mipmap.ic_launcher_round
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
             title = "Producto Testeo"
@@ -21,6 +23,7 @@ class SingleProductShopController : RxController() {
         }
 
         return inflater.inflate(R.layout.controller_product_shop, container, false).apply {
+            findViewById<ImageView>(R.id.product_shop_image).setImageResource(icon)
             findViewById<ImageView>(R.id.controller_product_shop_buy_view).setOnClickListener {
                 Toast.makeText(context, "You have clicked the buy button", Toast.LENGTH_LONG).show()
             }

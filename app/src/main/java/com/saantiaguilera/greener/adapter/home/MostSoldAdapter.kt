@@ -15,7 +15,7 @@ class MostSoldAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val count by lazy { (2..10).random() }
 
-    var clickListener: View.OnClickListener? = null
+    var clickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return object : RecyclerView.ViewHolder(ImageView(parent.context).apply {
@@ -25,8 +25,9 @@ class MostSoldAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
-        view.setOnClickListener { clickListener?.onClick(it) }
-        view.setImageResource(ResourcesUtil.random())
+        val icon = ResourcesUtil.random()
+        view.setOnClickListener { clickListener?.invoke(icon) }
+        view.setImageResource(icon)
     }
 
     override fun getItemCount(): Int = count
