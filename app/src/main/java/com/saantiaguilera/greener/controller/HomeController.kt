@@ -1,6 +1,5 @@
 package com.saantiaguilera.greener.controller
 
-import android.content.Context
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
@@ -34,14 +34,14 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
                 layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
                 adapter = PlantsAdapter().apply {
-                    addClickListener = { showSearch() }
-                    itemClickListener = View.OnClickListener { showDetailsForProduct() }
+                    addClickListener = { Toast.makeText(context, "De aca vamos a la seccion de plantar una nueva planta", Toast.LENGTH_LONG).show() }
+                    itemClickListener = { showDetailsForProduct(it) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductsAdapter().apply {
-                    clickListener = View.OnClickListener { showDetailsForProduct() }
+                    clickListener = { showDetailsForProduct(it) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
@@ -59,7 +59,6 @@ class HomeController : RxController() {
     private fun showTab(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_home -> showHomeTab()
-            R.id.action_plants -> showMyPlantsTab()
             R.id.action_store -> showStoreTab()
             R.id.action_profile -> showProfileTab()
         }
@@ -67,19 +66,19 @@ class HomeController : RxController() {
     }
 
     private fun showHomeTab() {
-    }
-
-    private fun showMyPlantsTab() {
+        // We are here
     }
 
     private fun showStoreTab() {
+        router.setRoot(RouterTransaction.with(SearchController()))
     }
 
     private fun showProfileTab() {
+        Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
     }
 
-    private fun showDetailsForProduct() {
-        router.pushController(RouterTransaction.with(SingleProductViewController())
+    private fun showDetailsForProduct(icon: Int) {
+        router.pushController(RouterTransaction.with(SingleProductViewController().apply { this.icon = icon })
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }

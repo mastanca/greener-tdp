@@ -1,21 +1,23 @@
 package com.saantiaguilera.greener.controller
 
-import android.content.Context
+import android.support.design.internal.BottomNavigationMenuView
+import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.search.SearchAdapter
-import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -52,7 +54,32 @@ class SearchController : RxController() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = SearchAdapter().apply { clickListener = View.OnClickListener { showShopForProduct() } }
             }
+
+            findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
+                setOnNavigationItemSelectedListener { item -> showTab(item) }
+            }
         }
+    }
+
+    private fun showTab(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_home -> showHomeTab()
+            R.id.action_store -> showStoreTab()
+            R.id.action_profile -> showProfileTab()
+        }
+        return true
+    }
+
+    private fun showHomeTab() {
+        router.setRoot(RouterTransaction.with(HomeController()))
+    }
+
+    private fun showStoreTab() {
+        // We are here
+    }
+
+    private fun showProfileTab() {
+        Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
     }
 
     private fun update(itemName: String) {

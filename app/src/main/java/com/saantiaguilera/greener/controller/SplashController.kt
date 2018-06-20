@@ -21,18 +21,15 @@ class SplashController : RxController() {
 
     private val delayTime = 5L
 
-    override fun onContextAvailable(context: Context) {
-        super.onContextAvailable(context)
-        (context as? AppCompatActivity)?.supportActionBar?.hide()
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
+        (container.context as? AppCompatActivity)?.supportActionBar?.hide()
+
         Observable.timer(delayTime, TimeUnit.SECONDS)
                 .compose(bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribe {
-                    router.pushController(RouterTransaction.with(HomeController())
+                    router.setRoot(RouterTransaction.with(HomeController())
                             .pushChangeHandler(FadeChangeHandler())
                             .popChangeHandler(FadeChangeHandler()))
                 }

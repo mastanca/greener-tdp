@@ -8,12 +8,6 @@
         android:title="Home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/action_plants"
-        android:enabled="true"
-        android:icon="@drawable/flower"
-        android:title="Mis plantas"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/action_store"
         android:enabled="true"
         android:icon="@drawable/store"

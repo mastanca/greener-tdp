@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.ResourcesUtil
 
 /**
  * TODO Describe what this class do.
@@ -14,7 +15,7 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val count by lazy { (2..10).random() }
 
-    var clickListener: View.OnClickListener? = null
+    var clickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return object : RecyclerView.ViewHolder(ImageView(parent.context).apply {
@@ -24,8 +25,9 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
-        view.setOnClickListener { clickListener?.onClick(it) }
-        view.setImageResource(R.mipmap.ic_launcher_round)
+        val resource = ResourcesUtil.random()
+        view.setOnClickListener { clickListener?.invoke(resource) }
+        view.setImageResource(resource)
     }
 
     override fun getItemCount(): Int = count

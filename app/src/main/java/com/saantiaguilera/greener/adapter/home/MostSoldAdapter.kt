@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.ResourcesUtil
 
 /**
  * TODO Describe what this class do.
@@ -25,7 +26,7 @@ class MostSoldAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
         view.setOnClickListener { clickListener?.onClick(it) }
-        view.setImageResource(R.mipmap.ic_launcher_round)
+        view.setImageResource(ResourcesUtil.random())
     }
 
     override fun getItemCount(): Int = count
