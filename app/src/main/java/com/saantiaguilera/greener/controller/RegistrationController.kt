@@ -8,6 +8,8 @@ import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import android.app.ProgressDialog
 import android.os.Handler
+import com.bluelinelabs.conductor.RouterTransaction
+import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import kotlinx.android.extensions.LayoutContainer
 
 import kotlinx.android.synthetic.main.controller_registration.*
@@ -35,7 +37,7 @@ class RegistrationController : RxController(), LayoutContainer {
         }
     }
 
-    fun signup() {
+    private fun signup() {
         if (!validate()) {
             onSignupFailed()
             return
@@ -43,7 +45,7 @@ class RegistrationController : RxController(), LayoutContainer {
 
         btnSignup.isEnabled = false
 
-        val progressDialog = ProgressDialog(applicationContext).apply {
+        val progressDialog = ProgressDialog(containerView!!.context).apply {
             isIndeterminate = true
             setMessage("Creating Account...")
             show()
@@ -66,9 +68,9 @@ class RegistrationController : RxController(), LayoutContainer {
     }
 
     private fun login() {
-//        router.setRoot(RouterTransaction.with(LoginController())
-//                .pushChangeHandler(FadeChangeHandler())
-//                .popChangeHandler(FadeChangeHandler()))
+        router.setRoot(RouterTransaction.with(LoginController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun validate(): Boolean {
