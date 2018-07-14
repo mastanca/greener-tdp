@@ -29,7 +29,7 @@ class SplashController : RxController() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribe {
-                    router.setRoot(RouterTransaction.with(HomeController())
+                    router.setRoot(RouterTransaction.with(RegistrationController())
                             .pushChangeHandler(FadeChangeHandler())
                             .popChangeHandler(FadeChangeHandler()))
                 }

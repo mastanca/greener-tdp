@@ -14,7 +14,7 @@ import com.saantiaguilera.greener.R
  */
 class SingleProductShopController : RxController() {
 
-    var icon: Int = R.mipmap.ic_launcher_round
+    var icon: Int = R.drawable.ic_splash
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
