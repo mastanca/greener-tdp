@@ -49,7 +49,7 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
             isIndeterminate = true
-            setMessage("Creating Account...")
+            setMessage("Planting crop...")
             show()
         }
 
@@ -62,15 +62,15 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
-        login()
+        home()
     }
 
     private fun onAddPlantFailed() {
         btnAdd.isEnabled = true
     }
 
-    private fun login() {
-        router.setRoot(RouterTransaction.with(LoginController())
+    private fun home() {
+        router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }
