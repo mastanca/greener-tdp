@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
@@ -14,12 +15,14 @@ import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.controller_aggregator_plant.*
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.saantiaguilera.greener.model.Plant
+import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.ResourcesUtil
+
 
 /**
- * TODO HACER VALIDACIONES BIEN
- * TODO AGREGAR COSITOS AL SPINNER
- * TODO QUE EL SPINNER INFLE HARDCODEADO ALGUNOS VALORCITOS
- * TODO CREAR UN DTO CON LOS VALORCITOS PARA PORTO
  * Created by Manuel Porto
  */
 @ContainerOptions(cache = CacheImplementation.NO_CACHE)
@@ -36,6 +39,39 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
         return inflater.inflate(R.layout.controller_aggregator_plant, container, false).apply {
             findViewById<View>(R.id.btnAdd).setOnClickListener { addPlant() }
+
+            val data = container.context.resources.getStringArray(R.array.plants_arrays).toList()
+            val dataAdapter = ArrayAdapter<String>(container.context,
+                    android.R.layout.simple_spinner_item, data)
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            findViewById<Spinner>(R.id.inputSpinner).apply {
+                adapter = dataAdapter
+                onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        inflate(null)
+                    }
+
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        inflate(view!!.context.resources.getStringArray(R.array.plants_arrays)[position])
+                    }
+                }
+            }
+        }
+    }
+
+    private fun inflate(name: String?) {
+        inputName.setText(name ?: "")
+        if (name == null) {
+            inputPlantImage.visibility = View.INVISIBLE
+            inputWateringInterval.setText("")
+            inputDialySunlightHours.setText("")
+            inputTemperature.setText("")
+        } else {
+            inputPlantImage.visibility = View.VISIBLE
+            inputPlantImage.setImageResource(ResourcesUtil.random())
+            inputWateringInterval.setText((1..5).random().toString())
+            inputDialySunlightHours.setText((1..14).random().toString())
+            inputTemperature.setText((10..30).random().toString())
         }
     }
 
@@ -49,7 +85,7 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
             isIndeterminate = true
-            setMessage("Creating Account...")
+            setMessage("Adding plant...")
             show()
         }
 
@@ -62,15 +98,20 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
-        login()
+        val plant = Plant(inputName.text.toString(),
+                inputWateringInterval.text.toString().toInt(),
+                inputDialySunlightHours.text.toString().toInt(),
+                inputTemperature.text.toString().toInt())
+        somewhere(plant)
     }
 
     private fun onAddPlantFailed() {
         btnAdd.isEnabled = true
     }
 
-    private fun login() {
-        router.setRoot(RouterTransaction.with(LoginController())
+    private fun somewhere(plant: Plant) {
+        // TODO Guardar la planta donde pinte. El HomeController que las levante despues
+        router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }
@@ -79,53 +120,37 @@ class PlantAggregatorController : RxController(), LayoutContainer {
         var valid = true
 
         val name = inputName.text.toString()
-        val address = inputAddress.text.toString()
-        val email = inputEmail.text.toString()
-        val mobile = inputMobile.text.toString()
-        val password = inputPassword.text.toString()
-        val reEnterPassword = inputReEnterPassword.text.toString()
+        val wateringInterval = inputWateringInterval.text.toString()
+        val dailySunlightHours = inputDialySunlightHours.text.toString()
+        val temperature = inputTemperature.text.toString()
 
         if (name.isEmpty() || name.length < 3) {
-            inputName.error = "at least 3 characters"
+            inputName.error = "At least 3 characters"
             valid = false
         } else {
             inputName.error = null
         }
 
-        if (address.isEmpty()) {
-            inputAddress.error = "Enter Valid Address"
+        if (wateringInterval.isEmpty() || wateringInterval.toInt() > 10) {
+            inputWateringInterval.error = "Enter valid watering interval"
             valid = false
         } else {
-            inputAddress.error = null
+            inputWateringInterval.error = null
         }
 
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            inputEmail.error = "enter a valid email address"
+        if (dailySunlightHours.isEmpty() || dailySunlightHours.toInt() > 24) {
+            inputDialySunlightHours.error = "Enter valid daily sunlight hours"
             valid = false
         } else {
-            inputEmail.error = null
+            inputDialySunlightHours.error = null
         }
 
-        if (mobile.isEmpty() || mobile.length != 10) {
-            inputMobile.error = "Enter Valid Mobile Number"
+        if (temperature.isEmpty() || temperature.toInt() > 50) {
+            inputTemperature.error = "Enter valid temperature in celsius"
             valid = false
         } else {
-            inputMobile.error = null
-        }
-
-        if (password.isEmpty() || password.length < 4 || password.length > 10) {
-            inputPassword.error = "between 4 and 10 alphanumeric characters"
-            valid = false
-        } else {
-            inputPassword.error = null
-        }
-
-        if (reEnterPassword.isEmpty() || reEnterPassword.length < 4 || reEnterPassword.length > 10 || reEnterPassword != password) {
-            inputReEnterPassword.error = "Password Do not match"
-            valid = false
-        } else {
-            inputReEnterPassword.error = null
+            inputTemperature.error = null
         }
 
         return valid

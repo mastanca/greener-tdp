@@ -15,7 +15,7 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class SplashController : RxController() {
 

@@ -9,7 +9,7 @@ import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class SingleProductViewController : RxController() {
 

@@ -10,7 +10,7 @@ import com.saantiaguilera.greener.screenSize
 import com.saantiaguilera.greener.util.ResourcesUtil
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 typealias OnAddClickListener = () -> Unit
 typealias OnItemClickListener = (Int) -> Unit

@@ -24,7 +24,7 @@ import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class SearchController : RxController() {
 

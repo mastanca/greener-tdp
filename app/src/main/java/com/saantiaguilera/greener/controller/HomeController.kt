@@ -20,7 +20,7 @@ import com.saantiaguilera.greener.adapter.home.PlantsAdapter
 import com.saantiaguilera.greener.adapter.home.ProductsAdapter
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class HomeController : RxController() {
 
@@ -34,7 +34,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
                 layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
                 adapter = PlantsAdapter().apply {
-                    addClickListener = { Toast.makeText(context, "De aca vamos a la seccion de plantar una nueva planta", Toast.LENGTH_LONG).show() }
+                    addClickListener = { showAddAPlantWizard() }
                     itemClickListener = { showDetailsForProduct(it) }
                 }
             }
@@ -67,6 +67,12 @@ class HomeController : RxController() {
 
     private fun showHomeTab() {
         // We are here
+    }
+
+    private fun showAddAPlantWizard() {
+        router.pushController(RouterTransaction.with(PlantAggregatorController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showStoreTab() {

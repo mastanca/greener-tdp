@@ -15,7 +15,7 @@ import com.saantiaguilera.greener.screenSize
 import com.saantiaguilera.greener.util.ResourcesUtil
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
