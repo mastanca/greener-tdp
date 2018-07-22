@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
@@ -56,11 +53,24 @@ class HomeController : RxController() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.app_bar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_notifications -> {
+            Toast.makeText(applicationContext, "Notificaciones", Toast.LENGTH_LONG).show()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
     private fun showTab(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_home -> showHomeTab()
             R.id.action_store -> showStoreTab()
-            R.id.action_profile -> showProfileTab()
+            R.id.action_profile -> showNotifications()
         }
         return true
     }
@@ -101,4 +111,9 @@ class HomeController : RxController() {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
+    private fun showNotifications() {
+        router.pushController(RouterTransaction.with(NotificationsController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
+    }
 }
