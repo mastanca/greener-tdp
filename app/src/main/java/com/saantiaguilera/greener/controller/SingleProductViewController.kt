@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.plant.Plant
 
 /**
  * TODO Describe what this class do.
@@ -14,6 +15,7 @@ import com.saantiaguilera.greener.R
 class SingleProductViewController : RxController() {
 
     var icon: Int = R.drawable.ic_splash
+    var plant: Plant? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {

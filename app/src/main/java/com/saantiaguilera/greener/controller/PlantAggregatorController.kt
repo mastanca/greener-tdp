@@ -10,6 +10,8 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.entities.plant.Plant
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
@@ -62,6 +64,16 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
+        if (applicationContext != null) {
+            AppDB.addPlant(Plant(
+                    name = inputName.text.toString(),
+                    sunlightHours = inputDialySunlightHours.text.toString().toDouble(),
+                    watering_interval = inputWateringInterval.text.toString().toInt(),
+                    minTemp = 0.0,
+                    maxTemp = 40.0
+            ), applicationContext)
+        }
+
         home()
     }
 
