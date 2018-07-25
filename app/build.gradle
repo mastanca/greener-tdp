@@ -59,6 +59,7 @@ dependencies {
     implementation "com.bluelinelabs:conductor:$conductorVersion"
     implementation "com.bluelinelabs:conductor-rxlifecycle2:$conductorVersion"
     implementation "com.bluelinelabs:conductor-autodispose:$conductorVersion"
+    implementation 'com.google.code.gson:gson:2.8.5'
 
     def room_version = "1.1.1"
     implementation "android.arch.persistence.room:runtime:$room_version"
