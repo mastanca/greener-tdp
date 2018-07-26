@@ -12,6 +12,7 @@ import android.content.Context
 import android.graphics.Point
 import android.view.Display
 import android.view.WindowManager
+import com.saantiaguilera.greener.controller.HomeController
 import java.util.*
 
 
@@ -26,7 +27,7 @@ class RootActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, findViewById(R.id.activity_root_view), savedInstanceState)
         if (!router!!.hasRootController()) {
-            router!!.setRoot(RouterTransaction.with(SplashController()))
+            router!!.setRoot(RouterTransaction.with(HomeController()))
         }
     }
 

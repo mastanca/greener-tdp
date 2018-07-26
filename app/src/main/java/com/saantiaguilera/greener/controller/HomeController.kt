@@ -10,6 +10,8 @@ import android.view.*
 import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
+import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.MostSoldAdapter
@@ -26,6 +28,8 @@ class HomeController : RxController() {
             title = resources!!.getString(R.string.app_name)
             show()
         }
+
+        setHasOptionsMenu(true)
 
         return inflater.inflate(R.layout.controller_home, container, false).apply {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
@@ -54,13 +58,13 @@ class HomeController : RxController() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.app_bar_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.app_bar_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_notifications -> {
-            Toast.makeText(applicationContext, "Notificaciones", Toast.LENGTH_LONG).show()
+            showNotifications()
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -70,7 +74,7 @@ class HomeController : RxController() {
         when (item.itemId) {
             R.id.action_home -> showHomeTab()
             R.id.action_store -> showStoreTab()
-            R.id.action_profile -> showNotifications()
+            R.id.action_profile -> showProfileTab()
         }
         return true
     }
@@ -113,7 +117,7 @@ class HomeController : RxController() {
 
     private fun showNotifications() {
         router.pushController(RouterTransaction.with(NotificationsController())
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
+                .pushChangeHandler(HorizontalChangeHandler())
+                .popChangeHandler(HorizontalChangeHandler()))
     }
 }
