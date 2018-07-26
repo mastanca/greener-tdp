@@ -26,7 +26,7 @@ class MostSoldAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
         val icon = ResourcesUtil.random()
-        view.setOnClickListener { clickListener?.invoke(icon) }
+        view.setOnClickListener { /*clickListener?.invoke(icon)*/ }
         view.setImageResource(icon)
     }
 

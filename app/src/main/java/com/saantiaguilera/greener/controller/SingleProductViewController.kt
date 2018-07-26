@@ -14,17 +14,16 @@ import com.saantiaguilera.greener.entities.plant.Plant
  */
 class SingleProductViewController : RxController() {
 
-    var icon: Int = R.drawable.ic_splash
-    var plant: Plant? = null
+    lateinit var plant: Plant
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = "Producto"
+            title = plant.name
             show()
         }
 
         return inflater.inflate(R.layout.controller_product_view, container, false).apply {
-            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(icon)
+            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(plant.getIcon())
         }
     }
 

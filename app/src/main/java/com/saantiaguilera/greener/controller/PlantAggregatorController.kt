@@ -42,11 +42,6 @@ class PlantAggregatorController : RxController(), LayoutContainer {
     }
 
     private fun addPlant() {
-        if (!validate()) {
-            onAddPlantFailed()
-            return
-        }
-
         btnAdd.isEnabled = false
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
@@ -65,44 +60,16 @@ class PlantAggregatorController : RxController(), LayoutContainer {
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
         if (applicationContext != null) {
-            AppDB.addPlant(Plant(
-                    name = inputName.text.toString(),
-                    sunlightHours = inputDialySunlightHours.text.toString().toDouble(),
-                    watering_interval = inputWateringInterval.text.toString().toInt(),
-                    minTemp = 0.0,
-                    maxTemp = 40.0
-            ), applicationContext)
+
         }
 
         home()
-    }
-
-    private fun onAddPlantFailed() {
-        btnAdd.isEnabled = true
     }
 
     private fun home() {
         router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
-    }
-
-    private fun validate(): Boolean {
-        var valid = true
-
-        val name = inputName.text.toString()
-        val temperature = inputTemperature.text.toString().toDouble()
-        val dailySunlightHours = inputDialySunlightHours.text.toString().toDouble()
-        val wateringInterval = inputWateringInterval.text.toString().toInt()
-
-        if (name.isEmpty() || name.length < 3) {
-            inputName.error = "at least 3 characters"
-            valid = false
-        } else {
-            inputName.error = null
-        }
-
-        return valid
     }
 
 }
