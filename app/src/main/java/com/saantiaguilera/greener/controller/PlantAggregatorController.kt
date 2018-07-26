@@ -11,6 +11,8 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.entities.plant.Plant
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
@@ -85,7 +87,7 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
             isIndeterminate = true
-            setMessage("Adding plant...")
+            setMessage("Planting crop...")
             show()
         }
 
@@ -98,19 +100,24 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
-        val plant = Plant(inputName.text.toString(),
-                inputWateringInterval.text.toString().toInt(),
-                inputDialySunlightHours.text.toString().toInt(),
-                inputTemperature.text.toString().toInt())
-        somewhere(plant)
+        if (applicationContext != null) {
+            AppDB.addPlant(Plant(
+                    name = inputName.text.toString(),
+                    sunlightHours = inputDialySunlightHours.text.toString().toDouble(),
+                    watering_interval = inputWateringInterval.text.toString().toInt(),
+                    minTemp = 0.0,
+                    maxTemp = 40.0
+            ), applicationContext)
+        }
+
+        home()
     }
 
     private fun onAddPlantFailed() {
         btnAdd.isEnabled = true
     }
 
-    private fun somewhere(plant: Plant) {
-        // TODO Guardar la planta donde pinte. El HomeController que las levante despues
+    private fun home() {
         router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))

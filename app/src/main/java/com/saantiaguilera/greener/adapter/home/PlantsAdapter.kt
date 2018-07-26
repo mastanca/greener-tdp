@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.screenSize
 import com.saantiaguilera.greener.util.ResourcesUtil
+import kotlin.coroutines.experimental.coroutineContext
 
 /**
  * Some class from the project
@@ -16,12 +19,13 @@ typealias OnAddClickListener = () -> Unit
 typealias OnItemClickListener = (Int) -> Unit
 class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val count by lazy { (2..10).random() }
+    private var plants: Array<Plant> = arrayOf()
 
     var addClickListener: OnAddClickListener? = null
     var itemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        plants = AppDB.getPlants(parent.context)
         return object : RecyclerView.ViewHolder(ImageView(parent.context).apply {
             layoutParams = ViewGroup.LayoutParams(screenSize(context).first / 3, 280)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
@@ -43,6 +47,6 @@ class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int = count
+    override fun getItemCount(): Int = plants.size + 1
 
 }

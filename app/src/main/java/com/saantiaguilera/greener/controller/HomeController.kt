@@ -34,7 +34,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
                 layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
                 adapter = PlantsAdapter().apply {
-                    addClickListener = { showAddAPlantWizard() }
+                    addClickListener = { showAddPlantTab() }
                     itemClickListener = { showDetailsForProduct(it) }
                 }
             }
@@ -81,6 +81,12 @@ class HomeController : RxController() {
 
     private fun showProfileTab() {
         Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
+    }
+
+    private fun showAddPlantTab() {
+        router.pushController(RouterTransaction.with(PlantAggregatorController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showDetailsForProduct(icon: Int) {
