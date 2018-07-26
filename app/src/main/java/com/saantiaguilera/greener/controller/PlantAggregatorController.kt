@@ -108,47 +108,4 @@ class PlantAggregatorController : RxController(), LayoutContainer {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-<<<<<<< HEAD
-=======
-    private fun validate(): Boolean {
-        var valid = true
-
-        val name = inputName.text.toString()
-        val wateringInterval = inputWateringInterval.text.toString()
-        val dailySunlightHours = inputDialySunlightHours.text.toString()
-        val temperature = inputTemperature.text.toString()
-
-        if (name.isEmpty() || name.length < 3) {
-            inputName.error = "At least 3 characters"
-            valid = false
-        } else {
-            inputName.error = null
-        }
-
-        if (wateringInterval.isEmpty() || wateringInterval.toInt() > 10) {
-            inputWateringInterval.error = "Enter valid watering interval"
-            valid = false
-        } else {
-            inputWateringInterval.error = null
-        }
-
-
-        if (dailySunlightHours.isEmpty() || dailySunlightHours.toInt() > 24) {
-            inputDialySunlightHours.error = "Enter valid daily sunlight hours"
-            valid = false
-        } else {
-            inputDialySunlightHours.error = null
-        }
-
-        if (temperature.isEmpty() || temperature.toInt() > 50) {
-            inputTemperature.error = "Enter valid temperature in celsius"
-            valid = false
-        } else {
-            inputTemperature.error = null
-        }
-
-        return valid
-    }
-
->>>>>>> 6e49a64eed7664b5eb5bd27d1f1a525a402c8806
 }
