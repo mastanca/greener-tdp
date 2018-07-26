@@ -22,7 +22,7 @@ import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class HomeController : RxController() {
 
@@ -70,6 +70,12 @@ class HomeController : RxController() {
 
     private fun showHomeTab() {
         // We are here
+    }
+
+    private fun showAddAPlantWizard() {
+        router.pushController(RouterTransaction.with(PlantAggregatorController())
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showStoreTab() {

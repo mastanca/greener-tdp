@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
@@ -16,12 +17,14 @@ import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.controller_aggregator_plant.*
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.saantiaguilera.greener.model.Plant
+import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.ResourcesUtil
+
 
 /**
- * TODO HACER VALIDACIONES BIEN
- * TODO AGREGAR COSITOS AL SPINNER
- * TODO QUE EL SPINNER INFLE HARDCODEADO ALGUNOS VALORCITOS
- * TODO CREAR UN DTO CON LOS VALORCITOS PARA PORTO
  * Created by Manuel Porto
  */
 @ContainerOptions(cache = CacheImplementation.NO_CACHE)
@@ -38,6 +41,39 @@ class PlantAggregatorController : RxController(), LayoutContainer {
 
         return inflater.inflate(R.layout.controller_aggregator_plant, container, false).apply {
             findViewById<View>(R.id.btnAdd).setOnClickListener { addPlant() }
+
+            val data = container.context.resources.getStringArray(R.array.plants_arrays).toList()
+            val dataAdapter = ArrayAdapter<String>(container.context,
+                    android.R.layout.simple_spinner_item, data)
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            findViewById<Spinner>(R.id.inputSpinner).apply {
+                adapter = dataAdapter
+                onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        inflate(null)
+                    }
+
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                        inflate(view!!.context.resources.getStringArray(R.array.plants_arrays)[position])
+                    }
+                }
+            }
+        }
+    }
+
+    private fun inflate(name: String?) {
+        inputName.setText(name ?: "")
+        if (name == null) {
+            inputPlantImage.visibility = View.INVISIBLE
+            inputWateringInterval.setText("")
+            inputDialySunlightHours.setText("")
+            inputTemperature.setText("")
+        } else {
+            inputPlantImage.visibility = View.VISIBLE
+            inputPlantImage.setImageResource(ResourcesUtil.random())
+            inputWateringInterval.setText((1..5).random().toString())
+            inputDialySunlightHours.setText((1..14).random().toString())
+            inputTemperature.setText((10..30).random().toString())
         }
     }
 
@@ -72,4 +108,47 @@ class PlantAggregatorController : RxController(), LayoutContainer {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
+<<<<<<< HEAD
+=======
+    private fun validate(): Boolean {
+        var valid = true
+
+        val name = inputName.text.toString()
+        val wateringInterval = inputWateringInterval.text.toString()
+        val dailySunlightHours = inputDialySunlightHours.text.toString()
+        val temperature = inputTemperature.text.toString()
+
+        if (name.isEmpty() || name.length < 3) {
+            inputName.error = "At least 3 characters"
+            valid = false
+        } else {
+            inputName.error = null
+        }
+
+        if (wateringInterval.isEmpty() || wateringInterval.toInt() > 10) {
+            inputWateringInterval.error = "Enter valid watering interval"
+            valid = false
+        } else {
+            inputWateringInterval.error = null
+        }
+
+
+        if (dailySunlightHours.isEmpty() || dailySunlightHours.toInt() > 24) {
+            inputDialySunlightHours.error = "Enter valid daily sunlight hours"
+            valid = false
+        } else {
+            inputDialySunlightHours.error = null
+        }
+
+        if (temperature.isEmpty() || temperature.toInt() > 50) {
+            inputTemperature.error = "Enter valid temperature in celsius"
+            valid = false
+        } else {
+            inputTemperature.error = null
+        }
+
+        return valid
+    }
+
+>>>>>>> 6e49a64eed7664b5eb5bd27d1f1a525a402c8806
 }

@@ -4,7 +4,7 @@ import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.random
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class ResourcesUtil {
 

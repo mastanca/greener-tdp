@@ -17,7 +17,7 @@ import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 @ContainerOptions(cache = CacheImplementation.NO_CACHE)
 class RegistrationController : RxController(), LayoutContainer {

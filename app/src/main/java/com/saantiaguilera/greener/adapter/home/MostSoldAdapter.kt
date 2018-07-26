@@ -9,7 +9,7 @@ import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.ResourcesUtil
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class MostSoldAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
