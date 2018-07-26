@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Greener</string>
+
+    <string-array name="plants_arrays">
+        <item>Tomate</item>
+        <item>Lechuga</item>
+        <item>Albahaca</item>
+        <item>Radichetta</item>
+        <item>Banana</item>
+        <item>Durazno</item>
+        <item>Manzana</item>
+        <item>Rucula</item>
+    </string-array>
 </resources>

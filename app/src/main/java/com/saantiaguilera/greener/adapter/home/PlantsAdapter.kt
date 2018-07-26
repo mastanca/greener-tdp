@@ -13,7 +13,7 @@ import com.saantiaguilera.greener.util.ResourcesUtil
 import kotlin.coroutines.experimental.coroutineContext
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 typealias OnAddClickListener = () -> Unit
 typealias OnItemClickListener = (Int) -> Unit

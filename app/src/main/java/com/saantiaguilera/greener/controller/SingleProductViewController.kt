@@ -10,7 +10,7 @@ import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.plant.Plant
 
 /**
- * TODO Describe what this class do.
+ * Some class from the project
  */
 class SingleProductViewController : RxController() {
 
