@@ -23,8 +23,16 @@ class MarketController : RxController() {
 
         return inflater.inflate(R.layout.controller_market, container, false).apply {
 
+            findViewById<TextView>(R.id.sell_product_tv).apply {
+                setOnClickListener { showMySales() }
+            }
+
             findViewById<TextView>(R.id.buy_product_tv).apply {
                 setOnClickListener { showSearch() }
+            }
+
+            findViewById<TextView>(R.id.map_tv).apply {
+                setOnClickListener { showMap() }
             }
 
             findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
@@ -58,5 +66,15 @@ class MarketController : RxController() {
         router.pushController(RouterTransaction.with(SearchController())
                 .pushChangeHandler(HorizontalChangeHandler())
                 .popChangeHandler(HorizontalChangeHandler()))
+    }
+
+    private fun showMySales() {
+        router.pushController(RouterTransaction.with(MySalesController())
+                .pushChangeHandler(HorizontalChangeHandler())
+                .popChangeHandler(HorizontalChangeHandler()))
+    }
+
+    private fun showMap() {
+        // TODO: Implement map view
     }
 }

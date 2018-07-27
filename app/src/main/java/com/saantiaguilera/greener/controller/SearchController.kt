@@ -1,18 +1,14 @@
 package com.saantiaguilera.greener.controller
 
-import android.support.design.internal.BottomNavigationMenuView
-import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
@@ -33,7 +29,10 @@ class SearchController : RxController() {
     lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        (container.context as? AppCompatActivity)?.supportActionBar?.hide()
+        (container.context as? AppCompatActivity)?.supportActionBar?.apply {
+            title = "Buscar productos"
+            show()
+        }
 
         debouncer.compose(bindToLifecycle())
                 .debounce(500, TimeUnit.MILLISECONDS)
@@ -54,32 +53,7 @@ class SearchController : RxController() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = SearchAdapter().apply { clickListener = { showShopForProduct(it) } }
             }
-
-            findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
-                setOnNavigationItemSelectedListener { item -> showTab(item) }
-            }
         }
-    }
-
-    private fun showTab(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_home -> showHomeTab()
-            R.id.action_store -> showStoreTab()
-            R.id.action_profile -> showProfileTab()
-        }
-        return true
-    }
-
-    private fun showHomeTab() {
-        router.setRoot(RouterTransaction.with(HomeController()))
-    }
-
-    private fun showStoreTab() {
-        // We are here
-    }
-
-    private fun showProfileTab() {
-        Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
     }
 
     private fun update(itemName: String) {
