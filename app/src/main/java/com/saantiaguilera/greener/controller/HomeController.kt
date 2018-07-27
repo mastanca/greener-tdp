@@ -76,7 +76,7 @@ class HomeController : RxController() {
     }
 
     private fun showStoreTab() {
-        router.setRoot(RouterTransaction.with(SearchController()))
+        router.setRoot(RouterTransaction.with(MarketController()))
     }
 
     private fun showProfileTab() {
@@ -91,12 +91,6 @@ class HomeController : RxController() {
 
     private fun showDetailsForProduct(icon: Int) {
         router.pushController(RouterTransaction.with(SingleProductViewController().apply { this.icon = icon })
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
-    }
-
-    private fun showSearch() {
-        router.pushController(RouterTransaction.with(SearchController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }

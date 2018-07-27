@@ -19,7 +19,6 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.controller_aggregator_plant.*
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.saantiaguilera.greener.model.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.ResourcesUtil
 
