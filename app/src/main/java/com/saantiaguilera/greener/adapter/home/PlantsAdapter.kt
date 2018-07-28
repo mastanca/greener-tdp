@@ -40,7 +40,7 @@ class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             in 0..(itemCount-2) -> {
                 val plant = plants[position]
                 view.setOnClickListener { itemClickListener?.invoke(plant) }
-                view.setImageResource(plant.getIcon())
+                view.setImageResource(plant.getIcon(holder.itemView.context))
             }
             itemCount - 1 -> {
                 view.setImageResource(R.drawable.ic_plus)

@@ -3,6 +3,7 @@ package com.saantiaguilera.greener.entities.plant
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.content.Context
 import com.google.gson.annotations.SerializedName
 import com.saantiaguilera.greener.util.ResourcesUtil
 
@@ -15,8 +16,8 @@ class Plant(@PrimaryKey var name : String,
             @ColumnInfo(name = "watering_interval") @SerializedName("watering_interval") var watering_interval : Int,
             @ColumnInfo(name = "icon") @SerializedName("icon") var icon : String) {
 
-    fun getIcon(): Int {
-        return java.lang.Long.parseLong(icon.removePrefix("0x"), 16).toInt()
+    fun getIcon(ctx: Context): Int {
+        return ctx.resources.getIdentifier(icon, "drawable", ctx.packageName)
     }
 
 }

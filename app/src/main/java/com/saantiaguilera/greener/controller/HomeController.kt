@@ -45,7 +45,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductsAdapter().apply {
-                    clickListener = { /*showDetailsForProduct(it)*/ }
+                    clickListener = { showDetailsForProduct(it) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
@@ -119,9 +119,9 @@ class HomeController : RxController() {
     }
 
     private fun showShopForProduct(plant: Plant) {
-//        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.icon = icon })
-//                .pushChangeHandler(FadeChangeHandler())
-//                .popChangeHandler(FadeChangeHandler()))
+        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.plant = plant })
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showNotifications() {
