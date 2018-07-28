@@ -1,6 +1,7 @@
 package com.saantiaguilera.greener.controller
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
@@ -16,6 +17,12 @@ import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.view.GreenerMapFragment
 import kotlinx.android.extensions.LayoutContainer
+import com.google.android.gms.maps.model.CameraPosition
+import android.location.Criteria
+import android.content.Context.LOCATION_SERVICE
+import android.location.LocationManager
+
+
 
 /**
  * Some class from the project
@@ -47,8 +54,15 @@ class SingleProductShopController : RxController(), LayoutContainer {
                 }, 1000)
             }
             ((context as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.singleProductShopMap) as GreenerMapFragment).getMapAsync { map ->
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-34.588653, -58.454734), 11.5f))
                 map.isMyLocationEnabled = true
+
+                val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+                val criteria = Criteria()
+
+                val location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
+                if (location != null) {
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 11.5f))
+                }
             }
         }
     }
