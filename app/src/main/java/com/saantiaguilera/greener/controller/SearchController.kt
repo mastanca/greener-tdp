@@ -14,6 +14,8 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.search.SearchAdapter
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.random
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -51,7 +53,7 @@ class SearchController : RxController() {
 
             recyclerView = findViewById<RecyclerView>(R.id.controller_search_recycler_field).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                adapter = SearchAdapter().apply { clickListener = { /*showShopForProduct(it)*/ } }
+                adapter = SearchAdapter().apply { clickListener = { showShopForProduct() } }
             }
         }
     }
@@ -60,10 +62,12 @@ class SearchController : RxController() {
         (recyclerView.adapter as SearchAdapter).update(itemName)
     }
 
-    private fun showShopForProduct(icon: Int) {
-//        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.icon = icon })
-//                .pushChangeHandler(FadeChangeHandler())
-//                .popChangeHandler(FadeChangeHandler()))
+    private fun showShopForProduct() {
+        val plants = AppDB.getPlants(applicationContext)
+        val plant = plants[(0 until plants.size).random()]
+        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.plant = plant })
+                .pushChangeHandler(FadeChangeHandler())
+                .popChangeHandler(FadeChangeHandler()))
     }
 
 }

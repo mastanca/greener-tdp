@@ -88,12 +88,6 @@ class HomeController : RxController() {
         // We are here
     }
 
-    private fun showAddAPlantWizard() {
-        router.pushController(RouterTransaction.with(PlantAggregatorController())
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
-    }
-
     private fun showStoreTab() {
         router.setRoot(RouterTransaction.with(MarketController()))
     }
@@ -114,14 +108,8 @@ class HomeController : RxController() {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showSearch() {
-        router.pushController(RouterTransaction.with(SearchController())
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
-    }
-
     private fun showShopForProduct(plant: Plant) {
-        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.plant = plant })
+        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.plant = plant })
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }
