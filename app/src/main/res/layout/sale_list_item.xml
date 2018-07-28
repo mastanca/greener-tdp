@@ -19,26 +19,34 @@
 
         <TextView
             android:id="@+id/sale_name"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_marginLeft="8dp"
             android:gravity="center_vertical"
             android:text="Nombre"
             android:textSize="14sp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="#bababa" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
+            android:layout_gravity="center_vertical|start"
             android:layout_marginLeft="10dp"
-            android:gravity="end"
+            android:gravity="center_vertical|start"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/sale_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|start"
                 android:text="Precio: $123"
                 android:textSize="14sp" />
 
@@ -46,7 +54,7 @@
                 android:id="@+id/sale_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|start"
                 android:text="Cantidad: 6"
                 android:textSize="14sp" />
 
