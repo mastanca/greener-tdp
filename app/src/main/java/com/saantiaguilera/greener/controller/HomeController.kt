@@ -6,13 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
+import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.MostSoldAdapter
@@ -31,6 +30,8 @@ class HomeController : RxController() {
             title = resources!!.getString(R.string.app_name)
             show()
         }
+
+        setHasOptionsMenu(true)
 
         return inflater.inflate(R.layout.controller_home, container, false).apply {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
@@ -59,6 +60,19 @@ class HomeController : RxController() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.app_bar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_notifications -> {
+            showNotifications()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
     private fun showTab(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_home -> showHomeTab()
@@ -79,7 +93,7 @@ class HomeController : RxController() {
     }
 
     private fun showStoreTab() {
-        router.setRoot(RouterTransaction.with(SearchController()))
+        router.setRoot(RouterTransaction.with(MarketController()))
     }
 
     private fun showProfileTab() {
@@ -110,4 +124,9 @@ class HomeController : RxController() {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
+    private fun showNotifications() {
+        router.pushController(RouterTransaction.with(NotificationsController())
+                .pushChangeHandler(HorizontalChangeHandler())
+                .popChangeHandler(HorizontalChangeHandler()))
+    }
 }

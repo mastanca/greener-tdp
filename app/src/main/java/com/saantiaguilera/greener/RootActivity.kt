@@ -12,6 +12,7 @@ import android.content.Context
 import android.graphics.Point
 import android.view.Display
 import android.view.WindowManager
+import com.saantiaguilera.greener.controller.HomeController
 import java.util.*
 
 

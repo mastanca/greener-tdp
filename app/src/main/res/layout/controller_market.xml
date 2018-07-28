@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sell_product_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/green_horizontal_gradient"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="center"
+        android:text="Vender productos"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#898989" />
+
+    <TextView
+        android:id="@+id/buy_product_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/green_horizontal_gradient"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="center"
+        android:text="Comprar productos"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#898989" />
+
+    <TextView
+        android:id="@+id/map_tv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/green_horizontal_gradient"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="center"
+        android:text="Mapa de productos"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/bottom_navigation_main" />
+
+</LinearLayout>
