@@ -47,6 +47,7 @@ class PlantDescriptionController : RxController() {
                     progressDialog.dismiss()
                 }, 1000)
             }
+
         }
     }
 
