@@ -30,7 +30,7 @@ class PlantDescriptionController : RxController() {
         }
 
         return inflater.inflate(R.layout.controller_product_shop, container, false).apply {
-            findViewById<ImageView>(R.id.product_shop_image).setImageResource(plant.getIcon())
+            findViewById<ImageView>(R.id.product_shop_image).setImageResource(plant.getIcon(context))
             findViewById<ImageView>(R.id.controller_product_shop_buy_view).setOnClickListener {
                 val progressDialog = ProgressDialog(it.context, R.style.AppAlertDialog).apply {
                     isIndeterminate = true

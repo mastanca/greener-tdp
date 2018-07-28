@@ -5,7 +5,7 @@
         "min_temp": 12.9,
         "max_temp": 20.6,
         "sunlight_hours": 4,
-        "icon": "0x7f07005a"
+        "icon": "albahaca"
     },
     {
         "name": "Frutilla",
@@ -13,7 +13,7 @@
         "min_temp": 12.8,
         "max_temp": 25.5,
         "sunlight_hours": 4,
-        "icon": "0x7f070066"
+        "icon": "frutilla"
     },
     {
         "name": "Lechuga",
@@ -21,7 +21,7 @@
         "min_temp": 16.9,
         "max_temp": 18.7,
         "sunlight_hours": 2,
-        "icon": "0x7f07007e"
+        "icon": "lechuga"
     },
     {
         "name": "Mandarinas",
@@ -29,7 +29,7 @@
         "min_temp": 10.8,
         "max_temp": 23.7,
         "sunlight_hours": 4,
-        "icon": "0x7f070080"
+        "icon": "mandarinas"
     },
     {
         "name": "Manzana roja",
@@ -37,7 +37,7 @@
         "min_temp": 18.9,
         "max_temp": 33.5,
         "sunlight_hours": 4,
-        "icon": "0x7f070081"
+        "icon": "manzana_roja"
     },
     {
         "name": "Manzana verde",
@@ -45,7 +45,7 @@
         "min_temp": 10.8,
         "max_temp": 22.8,
         "sunlight_hours": 3,
-        "icon": "0x7f070082"
+        "icon": "manzana_verde"
     },
     {
         "name": "Naranjas",
@@ -53,7 +53,7 @@
         "min_temp": 11.0,
         "max_temp": 23.8,
         "sunlight_hours": 4,
-        "icon": "0x7f070083"
+        "icon": "naranjas"
     },
     {
         "name": "Palta",
@@ -61,7 +61,7 @@
         "min_temp": 13.4,
         "max_temp": 17.7,
         "sunlight_hours": 3,
-        "icon": "0x7f070093"
+        "icon": "palta"
     },
     {
         "name": "Perejil",
@@ -69,7 +69,7 @@
         "min_temp": 13.7,
         "max_temp": 26.2,
         "sunlight_hours": 4,
-        "icon": "0x7f070094"
+        "icon": "perejil"
     },
     {
         "name": "Uvas",
@@ -77,7 +77,7 @@
         "min_temp": 12.8,
         "max_temp": 20.7,
         "sunlight_hours": 1,
-        "icon": "0x7f07009d"
+        "icon": "uvas"
     },
     {
         "name": "Zanahoria",
@@ -85,7 +85,7 @@
         "min_temp": 11.2,
         "max_temp": 12.1,
         "sunlight_hours": 2,
-        "icon": "0x7f07009e"
+        "icon": "zanahoria"
     },
     {
         "name": "Zapallo",
@@ -93,6 +93,6 @@
         "min_temp": 15.4,
         "max_temp": 16.2,
         "sunlight_hours": 3,
-        "icon": "0x7f07009f"
+        "icon": "zapallo"
     }
 ]

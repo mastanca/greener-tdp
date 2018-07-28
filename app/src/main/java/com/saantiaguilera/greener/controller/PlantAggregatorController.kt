@@ -12,14 +12,12 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.database.AppDB
-import com.saantiaguilera.greener.entities.plant.Plant
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.controller_aggregator_plant.*
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import com.saantiaguilera.greener.model.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.ResourcesUtil
 

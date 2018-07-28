@@ -23,7 +23,7 @@ class SingleProductViewController : RxController() {
         }
 
         return inflater.inflate(R.layout.controller_product_view, container, false).apply {
-            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(plant.getIcon())
+            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(plant.getIcon(context))
         }
     }
 
