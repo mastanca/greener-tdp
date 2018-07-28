@@ -57,10 +57,11 @@
             android:layout_marginBottom="8dp"/>
 
         <fragment
-            android:name="com.google.android.gms.maps.MapFragment"
-            android:id="@+id/product_shop_map"
+            android:tag="fragment_map"
+            android:id="@+id/productShopMap"
             android:layout_width="match_parent"
-            android:layout_height="360dp"/>
+            android:layout_height="210dp"
+            class="com.saantiaguilera.greener.view.GreenerMapFragment"/>
 
         <TextView
             android:layout_width="wrap_content"
