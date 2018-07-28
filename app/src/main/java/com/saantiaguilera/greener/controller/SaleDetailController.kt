@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.model.Sale
 
@@ -58,14 +59,14 @@ class SaleDetailController : RxController() {
     }
 
     private fun subtractPrice() {
-        var price = priceTv.text.dropLast(1).toString().toInt()
+        var price = priceTv.text.substring(1).toInt()
         price = if (price == 0) 0 else (price - 1)
-        priceTv.text = "$price$"
+        priceTv.text = "$$price"
     }
 
     private fun addPrice() {
-        val price = priceTv.text.dropLast(1).toString().toInt()
-        priceTv.text = "${price + 1}$"
+        val price = priceTv.text.substring(1).toInt()
+        priceTv.text = "$${price + 1}"
     }
 
     private fun subtractQuantity() {
@@ -80,7 +81,7 @@ class SaleDetailController : RxController() {
     }
 
     private fun confirmSale() {
-        val price = priceTv.text.dropLast(1).toString().toInt()
+        val price = priceTv.text.substring(1).toInt()
         val quantity = quantityTv.text.toString().toInt()
 
         if (price == 0 || quantity == 0)
@@ -91,6 +92,7 @@ class SaleDetailController : RxController() {
 
     private fun createSale(price: Int, quantity: Int) {
         val sale = Sale(plant.name, "", quantity, price, plant.icon)
+        AppDB.addSale(sale, applicationContext)
 
         router.popCurrentController()
         Handler().postDelayed({ router.popCurrentController() }, 200)
