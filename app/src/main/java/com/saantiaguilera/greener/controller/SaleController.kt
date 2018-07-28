@@ -27,7 +27,7 @@ class SaleController : RxController() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = PlantsMenuAdapter().apply {
                     clickListener = { selectPlant(it) }
-                    plants = AppDB.getAllPlants(context)
+                    plants = AppDB.getPlants(context)
                 }
             }
         }
