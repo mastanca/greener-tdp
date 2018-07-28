@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.ResourcesUtil
 
@@ -13,8 +14,7 @@ import com.saantiaguilera.greener.util.ResourcesUtil
  */
 class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val count by lazy { (2..10).random() }
-
+    lateinit var plants: Array<Plant>
     var clickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -26,10 +26,10 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
         val resource = ResourcesUtil.random()
-        view.setOnClickListener { /*clickListener?.invoke(resource)*/ }
+        view.setOnClickListener { clickListener?.invoke(plants[position]) }
         view.setImageResource(resource)
     }
 
-    override fun getItemCount(): Int = count
+    override fun getItemCount(): Int = plants.size
 
 }
