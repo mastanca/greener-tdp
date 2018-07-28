@@ -45,12 +45,14 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductsAdapter().apply {
+                    plants = AppDB.getAllPlants(context).copyOfRange(2, 7)
                     clickListener = { showDetailsForProduct(it) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = MostSoldAdapter().apply {
+                    plants = AppDB.getAllPlants(context).copyOfRange(0, 4)
                     clickListener = { showShopForProduct(it) }
                 }
             }
