@@ -29,8 +29,8 @@ class SalesAdapter : RecyclerView.Adapter<SaleViewHolder>() {
     override fun onBindViewHolder(holder: SaleViewHolder, position: Int) {
         holder.icon?.setImageResource(sales[position].icon)
         holder.name?.text = sales[position].name
-        holder.quantity?.text = sales[position].quantity.toString()
-        holder.price?.text = "$${sales[position].price}"
+        holder.quantity?.text = "Cantidad: ${sales[position].quantity}"
+        holder.price?.text = "Precio: $${sales[position].price}"
     }
 
 }
