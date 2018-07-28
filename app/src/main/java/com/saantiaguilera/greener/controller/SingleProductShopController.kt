@@ -21,6 +21,9 @@ import com.google.android.gms.maps.model.CameraPosition
 import android.location.Criteria
 import android.content.Context.LOCATION_SERVICE
 import android.location.LocationManager
+import com.google.android.gms.maps.model.MarkerOptions
+
+
 
 
 
@@ -61,6 +64,7 @@ class SingleProductShopController : RxController(), LayoutContainer {
 
                 val location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
                 if (location != null) {
+                    map.addMarker(MarkerOptions().position(LatLng(location.latitude - 0.033, location.longitude - 0.026)).title("Comprador"))
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 11.5f))
                 }
             }
