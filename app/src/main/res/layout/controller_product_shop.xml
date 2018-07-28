@@ -56,13 +56,11 @@
             android:textSize="20sp"
             android:layout_marginBottom="8dp"/>
 
-        <ImageView
+        <fragment
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:id="@+id/product_shop_map"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/example_image_map" />
+            android:layout_height="360dp"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,5 +1,7 @@
 package com.saantiaguilera.greener.controller
 
+import android.app.Activity
+import android.app.Fragment
 import android.app.ProgressDialog
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +17,9 @@ import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
 import kotlin.coroutines.experimental.coroutineContext
+import com.google.android.gms.maps.MapFragment
+
+
 
 /**
  * TODO Describe what this class do.

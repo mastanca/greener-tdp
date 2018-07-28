@@ -1,6 +1,6 @@
 package com.saantiaguilera.greener.controller
 
-import android.content.Context
+import android.Manifest
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
@@ -20,9 +20,12 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 class SplashController : RxController() {
 
     private val delayTime = 5L
+    private val requestAllPermissions = 1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.hide()
+
+        requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), requestAllPermissions)
 
         Observable.timer(delayTime, TimeUnit.SECONDS)
                 .compose(bindToLifecycle())
