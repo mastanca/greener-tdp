@@ -27,7 +27,7 @@ class RootActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, findViewById(R.id.activity_root_view), savedInstanceState)
         if (!router!!.hasRootController()) {
-            router!!.setRoot(RouterTransaction.with(HomeController()))
+            router!!.setRoot(RouterTransaction.with(SplashController()))
         }
     }
 
