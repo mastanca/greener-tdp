@@ -37,7 +37,7 @@ class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 text = itemName
             }
             findViewById<TextView>(R.id.item_search_price).text = "$ ${(1..5000).random()}"
-            setOnClickListener { clickListener?.invoke(icon) }
+            setOnClickListener { /*clickListener?.invoke(icon)*/ }
         }
     }
 

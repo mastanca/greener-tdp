@@ -1,5 +1,6 @@
 package com.saantiaguilera.greener.adapter.home
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
@@ -16,16 +17,16 @@ import kotlin.coroutines.experimental.coroutineContext
  * Some class from the project
  */
 typealias OnAddClickListener = () -> Unit
-typealias OnItemClickListener = (Int) -> Unit
+typealias OnItemClickListener = (Plant) -> Unit
 class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var plants: Array<Plant> = arrayOf()
+    lateinit var plants: Array<Plant>
 
     var addClickListener: OnAddClickListener? = null
     var itemClickListener: OnItemClickListener? = null
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        plants = AppDB.getPlants(parent.context)
         return object : RecyclerView.ViewHolder(ImageView(parent.context).apply {
             layoutParams = ViewGroup.LayoutParams(screenSize(context).first / 3, 280)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
@@ -34,11 +35,12 @@ class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
-        val icon = ResourcesUtil.random()
-        view.setOnClickListener { itemClickListener?.invoke(icon) }
+        view.setPadding(0, 16, 0, 16)
         when (position) {
             in 0..(itemCount-2) -> {
-                view.setImageResource(icon)
+                val plant = plants[position]
+                view.setOnClickListener { itemClickListener?.invoke(plant) }
+                view.setImageResource(plant.getIcon())
             }
             itemCount - 1 -> {
                 view.setImageResource(R.drawable.ic_plus)

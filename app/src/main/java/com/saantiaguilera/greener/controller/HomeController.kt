@@ -17,6 +17,8 @@ import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.MostSoldAdapter
 import com.saantiaguilera.greener.adapter.home.PlantsAdapter
 import com.saantiaguilera.greener.adapter.home.ProductsAdapter
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.entities.plant.Plant
 
 /**
  * Some class from the project
@@ -35,6 +37,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_plants).apply {
                 layoutManager = GridLayoutManager(context, 3, GridLayoutManager.VERTICAL, false)
                 adapter = PlantsAdapter().apply {
+                    plants = AppDB.getPlants(context)
                     addClickListener = { showAddPlantTab() }
                     itemClickListener = { showDetailsForProduct(it) }
                 }
@@ -42,7 +45,7 @@ class HomeController : RxController() {
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductsAdapter().apply {
-                    clickListener = { showDetailsForProduct(it) }
+                    clickListener = { /*showDetailsForProduct(it)*/ }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
@@ -98,21 +101,27 @@ class HomeController : RxController() {
     }
 
     private fun showAddPlantTab() {
-        router.pushController(RouterTransaction.with(PlantAggregatorController())
+        router.pushController(RouterTransaction.with(PlantsMenuController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showDetailsForProduct(icon: Int) {
-        router.pushController(RouterTransaction.with(SingleProductViewController().apply { this.icon = icon })
+    private fun showDetailsForProduct(plant: Plant) {
+        router.pushController(RouterTransaction.with(SingleProductViewController().apply { this.plant = plant })
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showShopForProduct(icon: Int) {
-        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.icon = icon })
+    private fun showSearch() {
+        router.pushController(RouterTransaction.with(SearchController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
+    }
+
+    private fun showShopForProduct(plant: Plant) {
+//        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.icon = icon })
+//                .pushChangeHandler(FadeChangeHandler())
+//                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showNotifications() {

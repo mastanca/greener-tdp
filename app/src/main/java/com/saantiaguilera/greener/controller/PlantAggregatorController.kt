@@ -77,11 +77,6 @@ class PlantAggregatorController : RxController(), LayoutContainer {
     }
 
     private fun addPlant() {
-        if (!validate()) {
-            onAddPlantFailed()
-            return
-        }
-
         btnAdd.isEnabled = false
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
@@ -100,66 +95,16 @@ class PlantAggregatorController : RxController(), LayoutContainer {
     private fun onAddPlantSuccess() {
         btnAdd.isEnabled = true
         if (applicationContext != null) {
-            AppDB.addPlant(Plant(
-                    name = inputName.text.toString(),
-                    sunlightHours = inputDialySunlightHours.text.toString().toDouble(),
-                    watering_interval = inputWateringInterval.text.toString().toInt(),
-                    minTemp = 0.0,
-                    maxTemp = 40.0
-            ), applicationContext)
+
         }
 
         home()
-    }
-
-    private fun onAddPlantFailed() {
-        btnAdd.isEnabled = true
     }
 
     private fun home() {
         router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
-    }
-
-    private fun validate(): Boolean {
-        var valid = true
-
-        val name = inputName.text.toString()
-        val wateringInterval = inputWateringInterval.text.toString()
-        val dailySunlightHours = inputDialySunlightHours.text.toString()
-        val temperature = inputTemperature.text.toString()
-
-        if (name.isEmpty() || name.length < 3) {
-            inputName.error = "At least 3 characters"
-            valid = false
-        } else {
-            inputName.error = null
-        }
-
-        if (wateringInterval.isEmpty() || wateringInterval.toInt() > 10) {
-            inputWateringInterval.error = "Enter valid watering interval"
-            valid = false
-        } else {
-            inputWateringInterval.error = null
-        }
-
-
-        if (dailySunlightHours.isEmpty() || dailySunlightHours.toInt() > 24) {
-            inputDialySunlightHours.error = "Enter valid daily sunlight hours"
-            valid = false
-        } else {
-            inputDialySunlightHours.error = null
-        }
-
-        if (temperature.isEmpty() || temperature.toInt() > 50) {
-            inputTemperature.error = "Enter valid temperature in celsius"
-            valid = false
-        } else {
-            inputTemperature.error = null
-        }
-
-        return valid
     }
 
 }

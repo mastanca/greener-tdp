@@ -51,7 +51,7 @@ class SearchController : RxController() {
 
             recyclerView = findViewById<RecyclerView>(R.id.controller_search_recycler_field).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                adapter = SearchAdapter().apply { clickListener = { showShopForProduct(it) } }
+                adapter = SearchAdapter().apply { clickListener = { /*showShopForProduct(it)*/ } }
             }
         }
     }
@@ -61,9 +61,9 @@ class SearchController : RxController() {
     }
 
     private fun showShopForProduct(icon: Int) {
-        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.icon = icon })
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
+//        router.pushController(RouterTransaction.with(PlantDescriptionController().apply { this.icon = icon })
+//                .pushChangeHandler(FadeChangeHandler())
+//                .popChangeHandler(FadeChangeHandler()))
     }
 
 }

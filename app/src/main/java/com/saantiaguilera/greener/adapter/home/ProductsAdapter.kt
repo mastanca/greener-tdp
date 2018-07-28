@@ -26,7 +26,7 @@ class ProductsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val view = holder.itemView as ImageView
         val resource = ResourcesUtil.random()
-        view.setOnClickListener { clickListener?.invoke(resource) }
+        view.setOnClickListener { /*clickListener?.invoke(resource)*/ }
         view.setImageResource(resource)
     }
 

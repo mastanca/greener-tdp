@@ -11,7 +11,7 @@ class AppDB {
     companion object {
 
         fun getPlants(ctx: Context?): Array<Plant> {
-            val json = ctx!!.getSharedPreferences("plants", 0).getString("plants", "[]")
+            val json = ctx!!.getSharedPreferences("plants.json", 0).getString("plants.json", "[]")
             return Gson().fromJson(json, Array<Plant>::class.java)
         }
 
@@ -19,7 +19,14 @@ class AppDB {
             val plants = getPlants(ctx).toMutableList()
             plants.add(plant)
             val json = GsonBuilder().create().toJson(plants)
-            ctx!!.getSharedPreferences("plants", 0).edit().putString("plants", json).apply()
+            ctx!!.getSharedPreferences("plants.json", 0).edit().putString("plants.json", json).apply()
+        }
+
+        fun getAllPlants(ctx: Context?): Array<Plant> {
+            val json = ctx!!.assets.open("plants.json").bufferedReader().use {
+                it.readText()
+            }
+            return Gson().fromJson(json, Array<Plant>::class.java)
         }
 
     }

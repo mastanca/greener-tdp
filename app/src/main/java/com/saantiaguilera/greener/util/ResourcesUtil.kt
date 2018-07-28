@@ -11,18 +11,18 @@ class ResourcesUtil {
     companion object {
 
         private val possibles = arrayOf(
-                R.drawable.albahaca,
-                R.drawable.frutilla,
-                R.drawable.lechuga,
-                R.drawable.mandarinas,
-                R.drawable.manzana_roja,
-                R.drawable.manzana_verde,
-                R.drawable.naranjas,
-                R.drawable.palta,
-                R.drawable.perejil,
-                R.drawable.uvas,
-                R.drawable.zanahoria,
-                R.drawable.zapallo
+                R.drawable.albahaca,        // 0x7f07005a
+                R.drawable.frutilla,        // 0x7f070066
+                R.drawable.lechuga,         // 0x7f07007e
+                R.drawable.mandarinas,      // 0x7f070080
+                R.drawable.manzana_roja,    // 0x7f070081
+                R.drawable.manzana_verde,   // 0x7f070082
+                R.drawable.naranjas,        // 0x7f070083
+                R.drawable.palta,           // 0x7f070093
+                R.drawable.perejil,         // 0x7f070094
+                R.drawable.uvas,            // 0x7f07009d
+                R.drawable.zanahoria,       // 0x7f07009e
+                R.drawable.zapallo          // 0x7f07009f
         )
 
         fun random() = possibles.random()
