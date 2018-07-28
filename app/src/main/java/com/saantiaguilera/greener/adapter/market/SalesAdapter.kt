@@ -11,10 +11,10 @@ import kotlinx.android.synthetic.main.sale_list_item.view.*
 class SalesAdapter : RecyclerView.Adapter<SaleViewHolder>() {
 
     private val sales = listOf(
-            Sale("Palta", "Descripcion", 5, 30, R.drawable.palta),
-            Sale("Lechuga", "Descripcion", 15, 20, R.drawable.lechuga),
-            Sale("Zanahoria", "Descripcion", 10, 15, R.drawable.zanahoria),
-            Sale("Albahaca", "Descripcion", 5, 20, R.drawable.albahaca)
+            Sale("Palta", "Descripcion", 5, 30, "palta"),
+            Sale("Lechuga", "Descripcion", 15, 20, "lechuga"),
+            Sale("Zanahoria", "Descripcion", 10, 15, "zanahoria"),
+            Sale("Albahaca", "Descripcion", 5, 20, "albahaca")
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SaleViewHolder {
@@ -27,7 +27,7 @@ class SalesAdapter : RecyclerView.Adapter<SaleViewHolder>() {
     override fun getItemCount(): Int = sales.size
 
     override fun onBindViewHolder(holder: SaleViewHolder, position: Int) {
-        holder.icon?.setImageResource(sales[position].icon)
+        holder.icon?.setImageResource(sales[position].getIcon(holder.itemView.context))
         holder.name?.text = sales[position].name
         holder.quantity?.text = "Cantidad: ${sales[position].quantity}"
         holder.price?.text = "Precio: $${sales[position].price}"
