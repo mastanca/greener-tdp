@@ -6,12 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.saantiaguilera.greener.R
-import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
-import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.screenSize
-import com.saantiaguilera.greener.util.ResourcesUtil
-import kotlin.coroutines.experimental.coroutineContext
 
 /**
  * Some class from the project

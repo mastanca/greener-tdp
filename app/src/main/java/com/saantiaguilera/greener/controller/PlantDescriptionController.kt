@@ -1,30 +1,39 @@
 package com.saantiaguilera.greener.controller
 
-import android.app.Activity
-import android.app.Fragment
 import android.app.ProgressDialog
+import android.graphics.Color
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
-import kotlin.coroutines.experimental.coroutineContext
-import com.google.android.gms.maps.MapFragment
+import com.saantiaguilera.greener.view.GreenerMapFragment
 
-
+import kotlinx.android.extensions.LayoutContainer
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.TileOverlayOptions
+import com.google.maps.android.heatmaps.Gradient
+import com.google.maps.android.heatmaps.HeatmapTileProvider
+import com.google.maps.android.heatmaps.WeightedLatLng
+import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.RandomRect
 
 /**
  * TODO Describe what this class do.
  */
-class PlantDescriptionController : RxController() {
+class PlantDescriptionController : RxController(), LayoutContainer {
+
+    override val containerView: View?
+        get() = view
 
     lateinit var plant: Plant
 
@@ -47,8 +56,40 @@ class PlantDescriptionController : RxController() {
                     progressDialog.dismiss()
                 }, 1000)
             }
-
+            ((context as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.productShopMap) as GreenerMapFragment).getMapAsync { map ->
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-34.588653, -58.454734), 11.5f))
+                map.isMyLocationEnabled = true
+                addHeatMap(map)
+            }
         }
+    }
+
+    override fun onDestroyView(view: View) {
+        super.onDestroyView(view)
+        val supportFragment = (view.context as AppCompatActivity).supportFragmentManager
+        supportFragment.beginTransaction().remove(supportFragment.findFragmentById(R.id.productShopMap)).commitNowAllowingStateLoss()
+    }
+
+    private fun addHeatMap(map: GoogleMap) {
+        val list = ArrayList<WeightedLatLng>()
+        val randomRect = RandomRect(-58.519965, -34.535500, -58.365470, -34.640643)
+
+        (1..50).forEach { list.add(WeightedLatLng(randomRect.next(), (100..300).random().toDouble())) }
+
+        val colors = intArrayOf(
+                Color.rgb(102, 225, 0),
+                Color.rgb(255, 0, 0)
+        )
+
+        val startPoints = floatArrayOf(0.2f, 1f)
+
+        val provider = HeatmapTileProvider.Builder()
+                .weightedData(list)
+                .gradient(Gradient(colors, startPoints))
+                .opacity(0.7)
+                .build()
+
+        map.addTileOverlay(TileOverlayOptions().tileProvider(provider))
     }
 
     private fun onAddPlantSuccess() {

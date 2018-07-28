@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.OnItemClickListener
+import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.screenSize
 import com.saantiaguilera.greener.util.ResourcesUtil
@@ -31,13 +32,14 @@ class SearchAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.apply {
             val icon = ResourcesUtil.random()
+            val plant = Plant(itemName!!, 0.0, 100.0, 1.0, 1, context.resources.getResourceEntryName(icon))
             findViewById<ImageView>(R.id.item_search_image).setImageResource(icon)
             findViewById<TextView>(R.id.item_search_name).apply {
                 width = screenSize(context).first
                 text = itemName
             }
             findViewById<TextView>(R.id.item_search_price).text = "$ ${(1..5000).random()}"
-            setOnClickListener { /*clickListener?.invoke(icon)*/ }
+            setOnClickListener { clickListener?.invoke(plant) }
         }
     }
 
