@@ -19,6 +19,7 @@ import com.saantiaguilera.greener.adapter.home.PlantsAdapter
 import com.saantiaguilera.greener.adapter.home.ProductsAdapter
 import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
+import com.saantiaguilera.greener.util.NotificationUtil
 
 /**
  * Some class from the project
@@ -85,7 +86,10 @@ class HomeController : RxController() {
     }
 
     private fun showHomeTab() {
-        // We are here
+        applicationContext?.let {
+            NotificationUtil
+                    .showNotification(it, "Tomate", "Necesita más agua")
+        }
     }
 
     private fun showStoreTab() {
