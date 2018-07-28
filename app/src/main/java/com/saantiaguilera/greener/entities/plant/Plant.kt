@@ -1,5 +1,6 @@
 package com.saantiaguilera.greener.entities.plant
 
+import android.content.Context
 import com.google.gson.annotations.SerializedName
 
 class Plant(var name : String,
@@ -9,8 +10,8 @@ class Plant(var name : String,
             @SerializedName("watering_interval") var watering_interval : Int,
             @SerializedName("icon") var icon : String) {
 
-    fun getIcon(): Int {
-        return java.lang.Long.parseLong(icon.removePrefix("0x"), 16).toInt()
+    fun getIcon(ctx: Context): Int {
+        return ctx.resources.getIdentifier(icon, "drawable", ctx.packageName)
     }
 
 }

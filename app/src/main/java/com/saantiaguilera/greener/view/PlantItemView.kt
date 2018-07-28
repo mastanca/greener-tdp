@@ -21,7 +21,7 @@ class PlantItemView(ctx: Context, attrs: AttributeSet? = null, defStyleAttr: Int
     fun setViewWith(plant: Plant) {
         val imgView = findViewById<ImageView>(R.id.view_plants_menu_item_pic)
         val textView = findViewById<TextView>(R.id.view_plants_menu_item_text)
-        imgView.setImageResource(plant.getIcon())
+        imgView.setImageResource(plant.getIcon(context))
         textView.setText(plant.name)
     }
 

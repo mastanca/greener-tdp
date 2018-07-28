@@ -12,7 +12,6 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.database.AppDB
-import com.saantiaguilera.greener.entities.plant.Plant
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
