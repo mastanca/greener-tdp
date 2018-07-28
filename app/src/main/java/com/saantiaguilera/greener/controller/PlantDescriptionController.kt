@@ -1,6 +1,5 @@
 package com.saantiaguilera.greener.controller
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.graphics.Color
 import android.os.Handler
@@ -18,7 +17,6 @@ import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.view.GreenerMapFragment
 
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.controller_product_shop.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -28,7 +26,6 @@ import com.google.maps.android.heatmaps.HeatmapTileProvider
 import com.google.maps.android.heatmaps.WeightedLatLng
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.RandomRect
-
 
 /**
  * TODO Describe what this class do.
@@ -67,6 +64,12 @@ class PlantDescriptionController : RxController(), LayoutContainer {
         }
     }
 
+    override fun onDestroyView(view: View) {
+        super.onDestroyView(view)
+        val supportFragment = (view.context as AppCompatActivity).supportFragmentManager
+        supportFragment.beginTransaction().remove(supportFragment.findFragmentById(R.id.productShopMap)).commitNowAllowingStateLoss()
+    }
+
     private fun addHeatMap(map: GoogleMap) {
         val list = ArrayList<WeightedLatLng>()
         val randomRect = RandomRect(-58.519965, -34.535500, -58.365470, -34.640643)
@@ -87,31 +90,6 @@ class PlantDescriptionController : RxController(), LayoutContainer {
                 .build()
 
         map.addTileOverlay(TileOverlayOptions().tileProvider(provider))
-    }
-
-    override fun onActivityStarted(activity: Activity) {
-        super.onActivityStarted(activity)
-        productShopMap.onStart()
-    }
-
-    override fun onActivityResumed(activity: Activity) {
-        super.onActivityResumed(activity)
-        productShopMap.onResume()
-    }
-
-    override fun onActivityPaused(activity: Activity) {
-        super.onActivityPaused(activity)
-        productShopMap.onPause()
-    }
-
-    override fun onActivityStopped(activity: Activity) {
-        super.onActivityStopped(activity)
-        productShopMap.onStop()
-    }
-
-    override fun onDestroyView(view: View) {
-        super.onDestroyView(view)
-        productShopMap.onDestroy()
     }
 
     private fun onAddPlantSuccess() {
