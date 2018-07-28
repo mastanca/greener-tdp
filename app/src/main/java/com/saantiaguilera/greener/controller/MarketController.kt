@@ -31,10 +31,6 @@ class MarketController : RxController() {
                 setOnClickListener { showSearch() }
             }
 
-            findViewById<TextView>(R.id.map_tv).apply {
-                setOnClickListener { showMap() }
-            }
-
             findViewById<BottomNavigationView>(R.id.bottom_navigation).apply {
                 setOnNavigationItemSelectedListener { item -> showTab(item) }
             }

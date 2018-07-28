@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryLight"
+        android:background="@color/colorAccent"
         android:drawableRight="@drawable/right_arrow"
         android:drawableTint="@color/materialGrey"
         android:gravity="center"
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/colorPrimaryLight"
+        android:background="@color/colorAccent"
         android:drawableRight="@drawable/right_arrow"
         android:drawableTint="@color/materialGrey"
         android:gravity="center"
@@ -42,20 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#898989" />
-
-    <TextView
-        android:id="@+id/map_tv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimaryLight"
-        android:drawableRight="@drawable/right_arrow"
-        android:drawableTint="@color/materialGrey"
-        android:gravity="center"
-        android:text="Mapa de productos"
-        android:textColor="@color/materialGrey"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
