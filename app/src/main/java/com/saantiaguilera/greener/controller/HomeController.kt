@@ -109,9 +109,9 @@ class HomeController : RxController() {
     }
 
     private fun showShopForProduct(plant: Plant) {
-        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.plant = plant })
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
+//        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.plant = plant })
+//                .pushChangeHandler(FadeChangeHandler())
+//                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showNotifications() {

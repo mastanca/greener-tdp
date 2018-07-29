@@ -23,10 +23,6 @@ import android.content.Context.LOCATION_SERVICE
 import android.location.LocationManager
 import com.google.android.gms.maps.model.MarkerOptions
 
-
-
-
-
 /**
  * Some class from the project
  */
@@ -39,7 +35,7 @@ class SingleProductShopController : RxController(), LayoutContainer {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = plant.name
+            title = "Regadera"
             show()
         }
 
@@ -48,7 +44,7 @@ class SingleProductShopController : RxController(), LayoutContainer {
             findViewById<ImageView>(R.id.singleProductShopBuyView).setOnClickListener {
                 val progressDialog = ProgressDialog(it.context, R.style.AppAlertDialog).apply {
                     isIndeterminate = true
-                    setMessage("Comprando producto...")
+                    setMessage("Comprando regadera...")
                     show()
                 }
                 Handler().postDelayed({
@@ -64,7 +60,7 @@ class SingleProductShopController : RxController(), LayoutContainer {
 
                 val location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
                 if (location != null) {
-                    map.addMarker(MarkerOptions().position(LatLng(location.latitude - 0.033, location.longitude - 0.026)).title("Comprador"))
+                    map.addMarker(MarkerOptions().position(LatLng(location.latitude - 0.033, location.longitude - 0.026)).title("Black & Decker Regaderas"))
                     map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 11.5f))
                 }
             }

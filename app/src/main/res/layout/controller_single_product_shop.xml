@@ -31,14 +31,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Esta fruta, normalmente de piel aterciopelada, posee una carne amarilla o blanquecina de sabor dulce y aroma delicado"
+            android:text="Regadera de acero inoxidable con 68 orificios que dispersan el agua de forma ergonomica y potente en forma de aeroventilas circulares"
             android:textSize="16sp"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Areas comunes de cultivo"
+            android:text="Ubicacion del vendedor"
             android:textSize="20sp"
             android:layout_marginBottom="8dp"/>
 
@@ -55,7 +55,7 @@
             android:gravity="center"
             android:textSize="24sp"
             android:textColor="@color/materialGrey"
-            android:text="Precio por kilo: 70$"/>
+            android:text="Precio por unidad: 380$"/>
 
         <ImageView
             android:id="@+id/singleProductShopBuyView"
