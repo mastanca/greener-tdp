@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Regadera de acero inoxidable con 68 orificios que dispersan el agua de forma ergonomica y potente en forma de aeroventilas circulares"
+            android:text="Regadera de acero inoxidable con manillar enchapado en oro. Cuenta con 68 orificios que dispersan el agua de forma ergonomica y potente. gracias a su modelo Rutherford basaso en aeroventilas circulares"
             android:textSize="16sp"
             android:layout_marginBottom="12dp"/>
 

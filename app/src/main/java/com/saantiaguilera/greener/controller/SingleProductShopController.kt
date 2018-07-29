@@ -51,15 +51,8 @@ class SingleProductShopController : RxController(), LayoutContainer {
             }
             ((context as AppCompatActivity).supportFragmentManager.findFragmentById(R.id.singleProductShopMap) as GreenerMapFragment).getMapAsync { map ->
                 map.isMyLocationEnabled = true
-
-                val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-                val criteria = Criteria()
-
-                val location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false))
-                if (location != null) {
-                    map.addMarker(MarkerOptions().position(LatLng(location.latitude - 0.033, location.longitude - 0.026)).title("Black & Decker Regaderas"))
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude, location.longitude), 11.5f))
-                }
+                map.addMarker(MarkerOptions().position(LatLng(-34.617633 - 0.033, -58.368385 - 0.026)).title("Black & Decker Regaderas"))
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(-34.617633, -58.368385), 11.5f))
             }
         }
     }
