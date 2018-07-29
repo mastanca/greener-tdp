@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            android:src="@drawable/watering_can"
             android:layout_marginLeft="120dp"
             android:layout_marginRight="120dp"
             android:layout_marginTop="24dp"
