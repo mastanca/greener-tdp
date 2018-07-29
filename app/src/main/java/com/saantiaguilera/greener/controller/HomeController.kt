@@ -94,7 +94,7 @@ class HomeController : RxController() {
     }
 
     private fun showProfileTab() {
-        NotificationUtil.showNotification(applicationContext!!, "Ya llego tu paquete", "Tu Glovo esta en tu puerta, ya podes retirar la regadera que compraste")
+        NotificationUtil.showNotification(applicationContext!!, "Ya llegó tu paquete", "Acaba de llegar Glovo con tu regadera, retirala!")
     }
 
     private fun showAddPlantTab() {
