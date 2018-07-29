@@ -94,7 +94,7 @@ class HomeController : RxController() {
     }
 
     private fun showProfileTab() {
-        Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
+        NotificationUtil.showNotification(applicationContext!!, "Ya llego tu paquete", "Tu Glovo esta en tu puerta, ya podes retirar la regadera que compraste")
     }
 
     private fun showAddPlantTab() {
