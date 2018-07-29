@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.notification_list_item.view.*
 class NotificationsAdapter : RecyclerView.Adapter<NotificationViewHolder>() {
 
     private val notifications = listOf(
-            Notification("Palta 1", "Necesita más agua", "20/05/2018 16:00"),
+            Notification("Tomate", "Es momento de regarlo, necesita más agua", "02/08/2018 20:00"),
             Notification("Lechuga", "Necesita más luz", "20/05/2018 12:00"),
             Notification("¡ATENCIÓN!", "Una tormenta se avecina, resguarda tus cultivos", "19/05/2018 18:00"),
             Notification("Tomate", "Necesita más luz", "19/05/2018 17:00"),

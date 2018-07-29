@@ -103,7 +103,7 @@
             android:paddingTop="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Algun cuidado que tengas que hacer"
+            android:text="Esta fruta, normalmente de piel aterciopelada, posee una carne amarilla o blanquecina de sabor dulce y aroma delicado"
             android:textSize="16sp"
             android:layout_marginBottom="12dp"/>
 

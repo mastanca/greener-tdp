@@ -86,10 +86,7 @@ class HomeController : RxController() {
     }
 
     private fun showHomeTab() {
-        applicationContext?.let {
-            NotificationUtil
-                    .showNotification(it, "Tomate", "Necesita más agua")
-        }
+        NotificationUtil.showNotification(applicationContext!!, "Tomate", "Es momento de regarlo, necesita más agua")
     }
 
     private fun showStoreTab() {
