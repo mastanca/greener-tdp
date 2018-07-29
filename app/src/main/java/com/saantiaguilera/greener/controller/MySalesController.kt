@@ -1,5 +1,6 @@
 package com.saantiaguilera.greener.controller
 
+import android.app.AlertDialog
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -28,7 +29,7 @@ class MySalesController : RxController() {
             val recyclerView = findViewById<RecyclerView>(R.id.sales_recycler).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = SalesAdapter().apply {
-                    sales =  AppDB.getSales(context)
+                    sales = AppDB.getSales(context)
                 }
             }
 
@@ -43,12 +44,27 @@ class MySalesController : RxController() {
     private fun View.setSwipeToRecycler(recyclerView: RecyclerView) {
         val swipeHandler = object : SwipeToDeleteCallback(context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val adapter = recyclerView.adapter as SalesAdapter
-                AppDB.removeSale(viewHolder.adapterPosition, context)
-                adapter.apply {
-                    sales = AppDB.getSales(context)
-                    notifyItemRemoved(viewHolder.adapterPosition)
+
+                val builder = AlertDialog.Builder(activity)
+                builder.setMessage("¿Está seguro que quiere eliminar la venta?")
+                        .setTitle("ATENCIÓN")
+
+                builder.setPositiveButton("Si") { dialog, _ ->
+                    dialog.dismiss()
+                    val adapter = recyclerView.adapter as SalesAdapter
+                    AppDB.removeSale(viewHolder.adapterPosition, context)
+                    adapter.apply {
+                        sales = AppDB.getSales(context)
+                        notifyItemRemoved(viewHolder.adapterPosition)
+                    }
                 }
+                builder.setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                    recyclerView.adapter.notifyDataSetChanged()
+                }
+
+                val dialog = builder.create()
+                dialog.show()
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
