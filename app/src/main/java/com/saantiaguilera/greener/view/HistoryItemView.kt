@@ -1,15 +1,14 @@
 package com.saantiaguilera.greener.view
 
 import android.content.Context
+import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.model.History
 import kotlinx.android.synthetic.main.view_plants_description_history_item.view.*
-import android.view.ViewGroup
-import android.support.v7.widget.RecyclerView
-
 
 
 class HistoryItemView(ctx: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(ctx, attrs, defStyleAttr) {

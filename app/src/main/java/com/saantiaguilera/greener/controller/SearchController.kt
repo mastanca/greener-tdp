@@ -14,9 +14,7 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.search.SearchAdapter
-import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
-import com.saantiaguilera.greener.random
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject

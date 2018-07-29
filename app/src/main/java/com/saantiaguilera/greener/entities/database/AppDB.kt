@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.model.Sale
-import java.text.FieldPosition
 
 
 class AppDB {

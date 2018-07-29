@@ -7,19 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
-import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.random
+import com.saantiaguilera.greener.util.ResourcesUtil
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.controller_aggregator_plant.*
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import com.saantiaguilera.greener.random
-import com.saantiaguilera.greener.util.ResourcesUtil
 
 
 /**

@@ -1,18 +1,14 @@
 package com.saantiaguilera.greener
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.bluelinelabs.conductor.RouterTransaction
-import com.bluelinelabs.conductor.Conductor
-import com.bluelinelabs.conductor.Router
-import com.saantiaguilera.greener.controller.SplashController
-import android.R.attr.y
-import android.R.attr.x
 import android.content.Context
 import android.graphics.Point
-import android.view.Display
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
-import com.saantiaguilera.greener.controller.HomeController
+import com.bluelinelabs.conductor.Conductor
+import com.bluelinelabs.conductor.Router
+import com.bluelinelabs.conductor.RouterTransaction
+import com.saantiaguilera.greener.controller.SplashController
 import java.util.*
 
 

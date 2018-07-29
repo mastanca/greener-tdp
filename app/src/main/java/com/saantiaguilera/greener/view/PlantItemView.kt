@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.plant.Plant
-import com.saantiaguilera.greener.util.ResourcesUtil
 
 class PlantItemView(ctx: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(ctx, attrs, defStyleAttr) {
 

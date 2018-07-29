@@ -11,21 +11,20 @@ import android.widget.ImageView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
-import com.saantiaguilera.greener.R
-import com.saantiaguilera.greener.entities.database.AppDB
-import com.saantiaguilera.greener.entities.plant.Plant
-import com.saantiaguilera.greener.view.GreenerMapFragment
-
-import kotlinx.android.extensions.LayoutContainer
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.TileOverlayOptions
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
 import com.google.maps.android.heatmaps.WeightedLatLng
+import com.saantiaguilera.greener.R
+import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.RandomRect
+import com.saantiaguilera.greener.view.GreenerMapFragment
+import kotlinx.android.extensions.LayoutContainer
 
 /**
  * TODO Describe what this class do.

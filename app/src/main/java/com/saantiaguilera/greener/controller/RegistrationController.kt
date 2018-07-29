@@ -1,20 +1,19 @@
 package com.saantiaguilera.greener.controller
 
+import android.app.ProgressDialog
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bluelinelabs.conductor.rxlifecycle2.RxController
-import com.saantiaguilera.greener.R
-import android.app.ProgressDialog
-import android.os.Handler
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
-import kotlinx.android.extensions.LayoutContainer
-
-import kotlinx.android.synthetic.main.controller_registration.*
+import com.bluelinelabs.conductor.rxlifecycle2.RxController
+import com.saantiaguilera.greener.R
 import kotlinx.android.extensions.CacheImplementation
 import kotlinx.android.extensions.ContainerOptions
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.controller_registration.*
 
 /**
  * Some class from the project

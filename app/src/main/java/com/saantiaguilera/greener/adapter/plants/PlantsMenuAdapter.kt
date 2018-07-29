@@ -2,7 +2,6 @@ package com.saantiaguilera.greener.adapter.plants
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.view.PlantItemView
 

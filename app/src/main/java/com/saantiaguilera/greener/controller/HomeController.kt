@@ -1,17 +1,14 @@
 package com.saantiaguilera.greener.controller
 
-import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
-import android.widget.Toast
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
-import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.home.MostSoldAdapter
@@ -86,10 +83,7 @@ class HomeController : RxController() {
     }
 
     private fun showHomeTab() {
-        applicationContext?.let {
-            NotificationUtil
-                    .showNotification(it, "Tomate", "Necesita más agua")
-        }
+        NotificationUtil.showNotification(applicationContext!!, "Tomate", "Es momento de regarlo, necesita más agua")
     }
 
     private fun showStoreTab() {
@@ -97,7 +91,7 @@ class HomeController : RxController() {
     }
 
     private fun showProfileTab() {
-        Toast.makeText(applicationContext, "Profile tab", Toast.LENGTH_LONG).show()
+        NotificationUtil.showNotification(applicationContext!!, "Ya llegó tu paquete", "Acaba de llegar Glovo con tu regadera, retirala!")
     }
 
     private fun showAddPlantTab() {
@@ -113,9 +107,9 @@ class HomeController : RxController() {
     }
 
     private fun showShopForProduct(plant: Plant) {
-        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.plant = plant })
-                .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
+//        router.pushController(RouterTransaction.with(SingleProductShopController().apply { this.plant = plant })
+//                .pushChangeHandler(FadeChangeHandler())
+//                .popChangeHandler(FadeChangeHandler()))
     }
 
     private fun showNotifications() {
