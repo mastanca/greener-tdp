@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.saantiaguilera.greener.R
-import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.model.Sale
 import kotlinx.android.synthetic.main.sale_list_item.view.*
 

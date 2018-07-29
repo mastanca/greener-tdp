@@ -2,6 +2,8 @@ package com.saantiaguilera.greener.controller
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.location.Criteria
+import android.location.LocationManager
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
@@ -13,15 +15,11 @@ import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.view.GreenerMapFragment
 import kotlinx.android.extensions.LayoutContainer
-import com.google.android.gms.maps.model.CameraPosition
-import android.location.Criteria
-import android.content.Context.LOCATION_SERVICE
-import android.location.LocationManager
-import com.google.android.gms.maps.model.MarkerOptions
 
 /**
  * Some class from the project
