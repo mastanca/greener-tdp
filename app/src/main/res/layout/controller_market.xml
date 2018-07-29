@@ -5,38 +5,75 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/sell_product_tv"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        android:drawableRight="@drawable/right_arrow"
-        android:drawableTint="@color/materialGrey"
-        android:gravity="center"
-        android:text="Vender productos"
-        android:textColor="@color/materialGrey"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_vender"
+            android:scaleType="fitXY"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/greyAlpha"/>
+
+        <TextView
+            android:id="@+id/sell_product_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTint="@color/materialGrey"
+            android:gravity="center"
+            android:text="Vender"
+            android:textColor="@color/colorAccent"
+            android:shadowColor="@color/materialGrey"
+            android:shadowDx="8"
+            android:shadowDy="8"
+            android:shadowRadius="12"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#898989" />
+        android:layout_height="2dp"
+        android:background="#ffffff" />
 
-    <TextView
-        android:id="@+id/buy_product_tv"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        android:drawableRight="@drawable/right_arrow"
-        android:drawableTint="@color/materialGrey"
-        android:gravity="center"
-        android:text="Comprar productos"
-        android:textColor="@color/materialGrey"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/background_comprar"
+            android:scaleType="fitXY"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/greyAlpha"/>
+
+        <TextView
+            android:id="@+id/buy_product_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTint="@color/materialGrey"
+            android:gravity="center"
+            android:text="Comprar"
+            android:textColor="@color/colorAccent"
+            android:shadowColor="@color/materialGrey"
+            android:shadowDx="8"
+            android:shadowDy="8"
+            android:shadowRadius="12"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
