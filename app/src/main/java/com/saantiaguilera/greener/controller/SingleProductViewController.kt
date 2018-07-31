@@ -1,15 +1,15 @@
 package com.saantiaguilera.greener.controller
 
+import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.description.HistoryAdapter
+import com.saantiaguilera.greener.entities.database.AppDB
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.model.History
 import kotlinx.android.synthetic.main.controller_product_view.view.*
@@ -27,6 +27,8 @@ class SingleProductViewController : RxController() {
             title = plant.name
             show()
         }
+
+        setHasOptionsMenu(true)
 
         val waterInterval = plant.watering_interval
         val waterText = if (waterInterval > 1) String.format("Every %d days", waterInterval) else "Every day"
@@ -53,4 +55,34 @@ class SingleProductViewController : RxController() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.plant_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_delete -> {
+            deletePlant()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun deletePlant() {
+        val builder = AlertDialog.Builder(activity)
+        builder.setMessage("¿Está seguro que quiere eliminar la planta?")
+                .setTitle("ATENCIÓN")
+
+        builder.setPositiveButton("Si") { dialog, _ ->
+            dialog.dismiss()
+            AppDB.removePlant(plant, applicationContext)
+            router.popCurrentController()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
 }

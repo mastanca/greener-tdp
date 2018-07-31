@@ -30,6 +30,15 @@ class AppDB {
             return Gson().fromJson(json, Array<Plant>::class.java)
         }
 
+        fun removePlant(plant: Plant, ctx: Context?) {
+            val plants = getPlants(ctx).toMutableList()
+            plants.removeAll {
+                it.name == plant.name
+            }
+            val json = GsonBuilder().create().toJson(plants)
+            ctx!!.getSharedPreferences("plants.json", 0).edit().putString("plants.json", json).apply()
+        }
+
         fun getSales(ctx: Context?): Array<Sale> {
             val json = ctx!!.getSharedPreferences("sales.json", 0).getString("sales.json", "[]")
             return Gson().fromJson(json, Array<Sale>::class.java)
