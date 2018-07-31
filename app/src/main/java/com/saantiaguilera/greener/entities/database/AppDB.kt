@@ -57,6 +57,13 @@ class AppDB {
             val json = GsonBuilder().create().toJson(sales)
             ctx!!.getSharedPreferences("sales.json", 0).edit().putString("sales.json", json).apply()
         }
+
+        fun replaceSale(position: Int, sale: Sale, ctx: Context?) {
+            val sales = getSales(ctx).toMutableList()
+            sales[position] = sale
+            val json = GsonBuilder().create().toJson(sales)
+            ctx!!.getSharedPreferences("sales.json", 0).edit().putString("sales.json", json).apply()
+        }
     }
 
 }

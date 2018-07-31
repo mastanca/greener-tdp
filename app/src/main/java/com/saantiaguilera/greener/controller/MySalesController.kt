@@ -10,11 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.RouterTransaction
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
 import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler
 import com.bluelinelabs.conductor.rxlifecycle2.RxController
 import com.saantiaguilera.greener.R
 import com.saantiaguilera.greener.adapter.market.SalesAdapter
 import com.saantiaguilera.greener.entities.database.AppDB
+import com.saantiaguilera.greener.model.Sale
 import com.saantiaguilera.greener.util.SwipeToDeleteCallback
 
 class MySalesController : RxController() {
@@ -30,6 +32,9 @@ class MySalesController : RxController() {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = SalesAdapter().apply {
                     sales = AppDB.getSales(context)
+                    clickListener = { sale, position ->
+                        editSale(sale, position)
+                    }
                 }
             }
 
@@ -39,6 +44,15 @@ class MySalesController : RxController() {
                 setOnClickListener { addSale() }
             }
         }
+    }
+
+    private fun editSale(sale: Sale, position: Int) {
+        router.pushController(RouterTransaction.with(EditSaleController().apply {
+            this.sale = sale
+            this.position = position
+        })
+                .pushChangeHandler(HorizontalChangeHandler())
+                .popChangeHandler(HorizontalChangeHandler()))
     }
 
     private fun View.setSwipeToRecycler(recyclerView: RecyclerView) {
