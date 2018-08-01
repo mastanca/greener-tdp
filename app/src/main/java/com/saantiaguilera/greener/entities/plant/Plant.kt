@@ -8,7 +8,8 @@ class Plant(var name : String,
             @SerializedName("max_temp") var maxTemp : Double,
             @SerializedName("sunlight_hours") var sunlightHours : Double,
             @SerializedName("watering_interval") var watering_interval : Int,
-            @SerializedName("icon") var icon : String) {
+            @SerializedName("icon") var icon : String,
+            @SerializedName("alias") var alias : String? = null) {
 
     fun getIcon(ctx: Context): Int {
         return ctx.resources.getIdentifier(icon, "drawable", ctx.packageName)

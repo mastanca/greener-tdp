@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="Mis Plantas"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/controller_home_recycler_view_my_plants"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="Mis Productos"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/controller_home_recycler_view_my_products"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="Mas Vendidos"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/controller_home_recycler_view_most_sold"
