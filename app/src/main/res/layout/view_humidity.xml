@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/view_humidity_level_6"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:paddingBottom="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey" />
+
+        <ImageView
+            android:id="@+id/view_humidity_level_5"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:paddingBottom="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey" />
+
+        <ImageView
+            android:id="@+id/view_humidity_level_4"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:paddingBottom="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey" />
+
+        <ImageView
+            android:id="@+id/view_humidity_level_3"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:paddingBottom="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey" />
+
+        <ImageView
+            android:id="@+id/view_humidity_level_2"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:paddingBottom="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey" />
+
+        <ImageView
+            android:id="@+id/view_humidity_level_1"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rounded_square_grey"
+            android:paddingBottom="1dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/view_humidity_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="32%"
+            android:textSize="32sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:text="humidity"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

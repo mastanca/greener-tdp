@@ -1,5 +1,6 @@
 package com.saantiaguilera.greener.controller
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.graphics.Color
 import android.os.Handler
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
@@ -25,6 +27,7 @@ import com.saantiaguilera.greener.random
 import com.saantiaguilera.greener.util.RandomRect
 import com.saantiaguilera.greener.view.GreenerMapFragment
 import kotlinx.android.extensions.LayoutContainer
+import kotlin.coroutines.experimental.coroutineContext
 
 /**
  * TODO Describe what this class do.
@@ -45,7 +48,8 @@ class PlantDescriptionController : RxController(), LayoutContainer {
         return inflater.inflate(R.layout.controller_product_shop, container, false).apply {
             findViewById<ImageView>(R.id.product_shop_image).setImageResource(plant.getIcon(context))
             findViewById<ImageView>(R.id.controller_product_shop_buy_view).setOnClickListener {
-                val progressDialog = ProgressDialog(it.context, R.style.AppAlertDialog).apply {
+                //showPlantNameDialog()
+                val progressDialog = ProgressDialog(applicationContext, R.style.AppAlertDialog).apply {
                     isIndeterminate = true
                     setMessage("Agregando cultivo...")
                     show()
@@ -100,6 +104,31 @@ class PlantDescriptionController : RxController(), LayoutContainer {
         router.setRoot(RouterTransaction.with(HomeController())
                 .pushChangeHandler(FadeChangeHandler())
                 .popChangeHandler(FadeChangeHandler()))
+    }
+
+    private fun showPlantNameDialog() {
+        val builder = AlertDialog.Builder(applicationContext)
+        builder.setTitle("Nombra tu planta")
+        val plantAlias = EditText(applicationContext)
+        builder.setView(plantAlias)
+
+        builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
+            plant.alias = plantAlias.text.toString()
+            val progressDialog = ProgressDialog(applicationContext, R.style.AppAlertDialog).apply {
+                isIndeterminate = true
+                setMessage("Agregando cultivo...")
+                show()
+            }
+            Handler().postDelayed({
+                onAddPlantSuccess()
+                progressDialog.dismiss()
+            }, 1000)
+        }
+        builder.setNegativeButton("Cancelar") { dialog, p1 ->
+            dialog.cancel()
+        }
+
+        builder.show()
     }
 
 }

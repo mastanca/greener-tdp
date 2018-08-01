@@ -37,14 +37,14 @@ class HomeController : RxController() {
                 adapter = PlantsAdapter().apply {
                     plants = AppDB.getPlants(context)
                     addClickListener = { showAddPlantTab() }
-                    itemClickListener = { showDetailsForProduct(it) }
+                    itemClickListener = { plant, showHistory -> showDetailsForProduct(plant, showHistory) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_my_products).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = ProductsAdapter().apply {
                     plants = AppDB.getAllPlants(context).copyOfRange(2, 7)
-                    clickListener = { showDetailsForProduct(it) }
+                    clickListener = { showDetailsForProduct(it, false) }
                 }
             }
             findViewById<RecyclerView>(R.id.controller_home_recycler_view_most_sold).apply {
@@ -100,10 +100,15 @@ class HomeController : RxController() {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showDetailsForProduct(plant: Plant) {
-        router.pushController(RouterTransaction.with(SingleProductViewController().apply { this.plant = plant })
+    private fun showDetailsForProduct(plant: Plant, showHistory: Boolean) {
+        router.pushController(RouterTransaction
+                .with(SingleProductViewController().apply {
+                    this.plant = plant
+                    this.showHistory = showHistory
+                })
                 .pushChangeHandler(FadeChangeHandler())
-                .popChangeHandler(FadeChangeHandler()))
+                .popChangeHandler(FadeChangeHandler())
+        )
     }
 
     private fun showShopForProduct(plant: Plant) {

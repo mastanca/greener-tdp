@@ -13,6 +13,7 @@ import com.saantiaguilera.greener.adapter.description.HistoryAdapter
 import com.saantiaguilera.greener.entities.plant.Plant
 import com.saantiaguilera.greener.model.History
 import kotlinx.android.synthetic.main.controller_product_view.view.*
+import java.util.*
 import kotlin.math.roundToInt
 
 /**
@@ -21,6 +22,7 @@ import kotlin.math.roundToInt
 class SingleProductViewController : RxController() {
 
     lateinit var plant: Plant
+    var showHistory: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
@@ -32,22 +34,29 @@ class SingleProductViewController : RxController() {
         val waterText = if (waterInterval > 1) String.format("Every %d days", waterInterval) else "Every day"
         val sunlightHours = plant.sunlightHours.roundToInt()
         val sunUnit = if (sunlightHours > 1) "hours" else "hour"
-        val tempText = String.format("%.1f°C - %.1f°C", plant.minTemp, plant.maxTemp)
+        val tempRangeText = String.format("%.1f°C - %.1f°C", plant.minTemp, plant.maxTemp)
+        val tempText = String.format("%.1f °C", Random().nextDouble()*(plant.maxTemp-plant.minTemp)+plant.minTemp)
 
         return inflater.inflate(R.layout.controller_product_view, container, false).apply {
+            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(plant.getIcon(context))
+            humidityView.setHumidity(Random().nextDouble())
+            temperatureText.text = tempText
+            luminosityText.text = String.format("%d lm", (Random().nextDouble()*(1000)+250).toInt())
+
             wateringText.setText(waterText)
             sunlightText.setText(String.format("%d %s daily", sunlightHours, sunUnit))
-            temperatureText.setText(tempText)
-            findViewById<ImageView>(R.id.product_view_ic_image).setImageResource(plant.getIcon(context))
+            temperatureRangeText.setText(tempRangeText)
+
+            if (!showHistory) findViewById<View>(R.id.product_view_history_title).visibility = View.GONE
             findViewById<RecyclerView>(R.id.controller_product_view_history_recycler_view).apply {
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 adapter = HistoryAdapter().apply {
-                    history = arrayOf(
+                    history = if (showHistory) arrayOf(
                             History("10/05/2018", "Plantada"),
                             History("11/05/2018", "Regada"),
                             History("25/05/2018", "Trasplantada"),
                             History("25/05/2018", "Regada")
-                    )
+                    ) else arrayOf()
                 }
             }
         }

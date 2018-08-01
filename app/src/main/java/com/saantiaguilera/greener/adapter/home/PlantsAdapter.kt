@@ -19,13 +19,14 @@ import com.saantiaguilera.greener.entities.plant.Plant
 typealias OnAddClickListener = () -> Unit
 
 typealias OnItemClickListener = (Plant) -> Unit
+typealias OnPlantClickListener = (Plant, Boolean) -> Unit
 
 class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var plants: Array<Plant>
 
     var addClickListener: OnAddClickListener? = null
-    var itemClickListener: OnItemClickListener? = null
+    var itemClickListener: OnPlantClickListener? = null
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -41,7 +42,7 @@ class PlantsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (position) {
             in 0..(itemCount - 2) -> {
                 val plant = plants[position]
-                view.setOnClickListener { itemClickListener?.invoke(plant) }
+                view.setOnClickListener { itemClickListener?.invoke(plant, position < itemCount-2) }
                 view.findViewById<ImageView>(R.id.plant_image)
                         .setImageResource(plant.getIcon(holder.itemView.context))
                 view.findViewById<TextView>(R.id.plant_name_tv).text = plant.name
