@@ -33,9 +33,9 @@ class SingleProductViewController : RxController() {
         setHasOptionsMenu(true)
 
         val waterInterval = plant.watering_interval
-        val waterText = if (waterInterval > 1) String.format("Every %d days", waterInterval) else "Every day"
+        val waterText = if (waterInterval > 1) String.format("Cada %d dias", waterInterval) else "Cada día"
         val sunlightHours = plant.sunlightHours.roundToInt()
-        val sunUnit = if (sunlightHours > 1) "hours" else "hour"
+        val sunUnit = if (sunlightHours > 1) "horas" else "hora"
         val tempRangeText = String.format("%.1f°C - %.1f°C", plant.minTemp, plant.maxTemp)
         val tempText = String.format("%.1f °C", Random().nextDouble()*(plant.maxTemp-plant.minTemp)+plant.minTemp)
 
@@ -46,7 +46,7 @@ class SingleProductViewController : RxController() {
             luminosityText.text = String.format("%d lm", (Random().nextDouble()*(1000)+250).toInt())
 
             wateringText.setText(waterText)
-            sunlightText.setText(String.format("%d %s daily", sunlightHours, sunUnit))
+            sunlightText.setText(String.format("%d %s por día", sunlightHours, sunUnit))
             temperatureRangeText.setText(tempRangeText)
 
             if (!showHistory) findViewById<View>(R.id.product_view_history_title).visibility = View.GONE

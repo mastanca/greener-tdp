@@ -116,7 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView android:text="Specifications"
+            <TextView android:text="Especificaciones"
                 android:paddingBottom="4dp"
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
@@ -204,7 +204,7 @@
                 android:id="@+id/product_view_history_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="History"
+                android:text="Historial"
                 android:textSize="20sp"
                 android:layout_marginBottom="8dp"/>
 
