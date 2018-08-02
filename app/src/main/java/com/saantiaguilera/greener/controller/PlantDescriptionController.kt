@@ -2,6 +2,7 @@ package com.saantiaguilera.greener.controller
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
@@ -48,8 +49,8 @@ class PlantDescriptionController : RxController(), LayoutContainer {
         return inflater.inflate(R.layout.controller_product_shop, container, false).apply {
             findViewById<ImageView>(R.id.product_shop_image).setImageResource(plant.getIcon(context))
             findViewById<ImageView>(R.id.controller_product_shop_buy_view).setOnClickListener {
-                //showPlantNameDialog()
-                val progressDialog = ProgressDialog(applicationContext, R.style.AppAlertDialog).apply {
+//                showPlantNameDialog(it.context)
+                val progressDialog = ProgressDialog(it.context, R.style.AppAlertDialog).apply {
                     isIndeterminate = true
                     setMessage("Agregando cultivo...")
                     show()
@@ -106,7 +107,7 @@ class PlantDescriptionController : RxController(), LayoutContainer {
                 .popChangeHandler(FadeChangeHandler()))
     }
 
-    private fun showPlantNameDialog() {
+    private fun showPlantNameDialog(ctx: Context) {
         val builder = AlertDialog.Builder(applicationContext)
         builder.setTitle("Nombra tu planta")
         val plantAlias = EditText(applicationContext)
@@ -114,7 +115,7 @@ class PlantDescriptionController : RxController(), LayoutContainer {
 
         builder.setPositiveButton(android.R.string.ok) { dialog, p1 ->
             plant.alias = plantAlias.text.toString()
-            val progressDialog = ProgressDialog(applicationContext, R.style.AppAlertDialog).apply {
+            val progressDialog = ProgressDialog(ctx, R.style.AppAlertDialog).apply {
                 isIndeterminate = true
                 setMessage("Agregando cultivo...")
                 show()
