@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Esta fruta, normalmente de piel aterciopelada, posee una carne amarilla o blanquecina de sabor dulce y aroma delicado"
+            android:text="Es una hierba anual, cultivada como perenne en climas tropicales, de crecimiento bajo (entre 30 y 130 cm), con hojas opuestas de un verde lustroso, ovales u ovadas, dentadas y de textura sedosa, que miden de 3 a 11 cm de longitud por 1 a 6 cm de anchura."
             android:textSize="16sp"
             android:layout_marginBottom="12dp"/>
 
@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Se debe podar de entre 26 a 30 pulgadas. Al cosechar se deben dejar algunos frutos en el arbol"
+            android:text="Requiere una posición soleada, aunque en climas de veranos muy calurosos agradece algo de sombra y suelos fértiles, permeables y húmedos."
             android:textSize="16sp"
             android:layout_marginBottom="12dp"/>
 
