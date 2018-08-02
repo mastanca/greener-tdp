@@ -48,7 +48,7 @@ class LoginController : RxController(), LayoutContainer {
 
         val progressDialog = ProgressDialog(containerView!!.context, R.style.AppAlertDialog).apply {
             isIndeterminate = true
-            setMessage("Authenticating...")
+            setMessage("Autenticando...")
             show()
         }
 
@@ -86,14 +86,14 @@ class LoginController : RxController(), LayoutContainer {
         val password = inputPassword.text.toString()
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            inputEmail.error = "enter a valid email address"
+            inputEmail.error = "ingresa un email valido"
             valid = false
         } else {
             inputEmail.error = null
         }
 
         if (password.isEmpty() || password.length < 4 || password.length > 10) {
-            inputPassword.error = "between 4 and 10 alphanumeric characters"
+            inputPassword.error = "entre 4 y 10 caracteres alfanumericos"
             valid = false
         } else {
             inputPassword.error = null

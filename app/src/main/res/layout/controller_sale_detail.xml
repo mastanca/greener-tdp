@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Name"
+        android:text="Nombre"
         android:textSize="25sp" />
 
     <ImageView
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:gravity="center"
-            android:text="Price:"
+            android:text="Precio:"
             android:textSize="25sp" />
 
         <TextView
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:gravity="center"
-            android:text="Quantity:"
+            android:text="Cantidad:"
             android:textSize="25sp" />
 
         <TextView

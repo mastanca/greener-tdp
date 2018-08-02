@@ -23,7 +23,7 @@ class MySalesController : RxController() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = "My sales"
+            title = "Mis ventas"
             show()
         }
 
@@ -59,7 +59,7 @@ class MySalesController : RxController() {
         val swipeHandler = object : SwipeToDeleteCallback(context) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-                val builder = AlertDialog.Builder(activity)
+                val builder = AlertDialog.Builder(activity, R.style.AppAlertDialog)
                 builder.setMessage("¿Está seguro que quiere eliminar la venta?")
                         .setTitle("ATENCIÓN")
 

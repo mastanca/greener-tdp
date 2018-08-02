@@ -26,7 +26,7 @@ class RegistrationController : RxController(), LayoutContainer {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = "Registracion"
+            title = "Registro"
             show()
         }
 
@@ -46,7 +46,7 @@ class RegistrationController : RxController(), LayoutContainer {
 
         val progressDialog = ProgressDialog(containerView!!.context).apply {
             isIndeterminate = true
-            setMessage("Creating Account...")
+            setMessage("Creando cuenta...")
             show()
         }
 
@@ -83,14 +83,14 @@ class RegistrationController : RxController(), LayoutContainer {
         val reEnterPassword = inputReEnterPassword.text.toString()
 
         if (name.isEmpty() || name.length < 3) {
-            inputName.error = "at least 3 characters"
+            inputName.error = "al menos 3 caracteres"
             valid = false
         } else {
             inputName.error = null
         }
 
         if (address.isEmpty()) {
-            inputAddress.error = "Enter Valid Address"
+            inputAddress.error = "Ingresa una direccion correcta"
             valid = false
         } else {
             inputAddress.error = null
@@ -98,28 +98,28 @@ class RegistrationController : RxController(), LayoutContainer {
 
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            inputEmail.error = "enter a valid email address"
+            inputEmail.error = "Ingresa un email correcto"
             valid = false
         } else {
             inputEmail.error = null
         }
 
         if (mobile.isEmpty() || mobile.length != 10) {
-            inputMobile.error = "Enter Valid Mobile Number"
+            inputMobile.error = "Ingresa un numero correcto"
             valid = false
         } else {
             inputMobile.error = null
         }
 
         if (password.isEmpty() || password.length < 4 || password.length > 10) {
-            inputPassword.error = "between 4 and 10 alphanumeric characters"
+            inputPassword.error = "entre 4 y 10 caracteres alfanumericos"
             valid = false
         } else {
             inputPassword.error = null
         }
 
         if (reEnterPassword.isEmpty() || reEnterPassword.length < 4 || reEnterPassword.length > 10 || reEnterPassword != password) {
-            inputReEnterPassword.error = "Password Do not match"
+            inputReEnterPassword.error = "La contraseña no coincide"
             valid = false
         } else {
             inputReEnterPassword.error = null

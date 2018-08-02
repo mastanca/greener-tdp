@@ -23,7 +23,7 @@ class SaleDetailController : RxController() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = "Select sale's details"
+            title = "Selecciona los detalles"
             show()
         }
 
@@ -85,7 +85,7 @@ class SaleDetailController : RxController() {
         val quantity = quantityTv.text.toString().toInt()
 
         if (price == 0 || quantity == 0)
-            Toast.makeText(applicationContext, "Values can't be zero", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Los valores no pueden ser cero", Toast.LENGTH_SHORT).show()
         else
             createSale(price, quantity)
     }

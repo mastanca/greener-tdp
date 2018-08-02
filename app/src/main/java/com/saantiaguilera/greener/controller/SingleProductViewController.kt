@@ -78,7 +78,7 @@ class SingleProductViewController : RxController() {
     }
 
     private fun deletePlant() {
-        val builder = AlertDialog.Builder(activity)
+        val builder = AlertDialog.Builder(activity, R.style.AppAlertDialog)
         builder.setMessage("¿Está seguro que quiere eliminar la planta?")
                 .setTitle("ATENCIÓN")
 

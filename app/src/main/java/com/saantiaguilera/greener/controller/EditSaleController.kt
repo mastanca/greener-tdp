@@ -22,7 +22,7 @@ class EditSaleController : RxController() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         (container.context as? AppCompatActivity)?.supportActionBar?.apply {
-            title = "Edit sale's details"
+            title = "Edita los detalles"
             show()
         }
 
