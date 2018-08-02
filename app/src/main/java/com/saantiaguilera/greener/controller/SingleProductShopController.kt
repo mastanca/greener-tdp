@@ -38,7 +38,7 @@ class SingleProductShopController : RxController(), LayoutContainer {
         }
 
         return inflater.inflate(R.layout.controller_single_product_shop, container, false).apply {
-            findViewById<ImageView>(R.id.singleProductShopBuyView).setOnClickListener {
+            findViewById<android.support.v7.widget.AppCompatButton>(R.id.singleProductShopBuyView).setOnClickListener {
                 val progressDialog = ProgressDialog(it.context, R.style.AppAlertDialog).apply {
                     isIndeterminate = true
                     setMessage("Comprando regadera...")

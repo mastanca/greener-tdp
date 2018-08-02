@@ -58,12 +58,18 @@
             android:textColor="@color/materialGrey"
             android:text="Precio por unidad: 380$"/>
 
-        <ImageView
+        <Button
             android:id="@+id/singleProductShopBuyView"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:src="@drawable/ic_chopin"
-            android:scaleType="centerInside" />
+            android:layout_height="wrap_content"
+            android:text="Comprar" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/singleProductShopBuyView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:src="@drawable/ic_chopin"-->
+            <!--android:scaleType="centerInside" />-->
 
     </LinearLayout>
 

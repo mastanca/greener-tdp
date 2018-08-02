@@ -114,12 +114,18 @@
 
         </LinearLayout>
 
-        <ImageView
+        <Button
             android:id="@+id/controller_product_shop_buy_view"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:src="@drawable/macetaneitor"
-            android:scaleType="centerInside" />
+            android:layout_height="wrap_content"
+            android:text="Plantar" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/controller_product_shop_buy_view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:src="@drawable/macetaneitor"-->
+            <!--android:scaleType="centerInside" />-->
 
     </LinearLayout>
 
